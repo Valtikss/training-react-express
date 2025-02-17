@@ -127,7 +127,7 @@ Nous utilisons ce schéma de branches :
 
 ## Comment réaliser un exercice et envoyer sa solution ?
 
-Chaque jour, un nouvel exercice est publié via discord, dans le channel **exercices**. Suivez les étapes :
+Chaque jour, un nouvel exercice est publié via discord, dans le channel **[💪・exercices](https://discord.com/channels/1341055544999280710/1341055544999280713)**. Suivez les étapes :
 
 1. **Lisez l’énoncé** de l’exercice du jour (20-30 minutes de travail).  
 2. **Sur votre branche de dev** (ex. `dev/alexis`), implémentez les changements demandés :
