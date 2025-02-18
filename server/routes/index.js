@@ -1,5 +1,5 @@
 const express = require('express');
-const testRoutes = require('./Route');
+const testRoutes = require('./testRoutes');
 const router = express.Router();
 
 // Route test
