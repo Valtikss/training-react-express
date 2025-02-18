@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Route test
 app.get('/api/test', (req, res) => {
-  res.json({ message: 'Retour test de l\'API côté serveur' });
+  res.json({ status: 'ok' });
 });
 
 // Lancement du serveur
