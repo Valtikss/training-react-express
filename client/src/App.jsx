@@ -21,8 +21,8 @@ function App() {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold text-primary">
-        {message}
+      <h1 className="text-red-500 text-2xl font-bold text-primary">
+        Hello world !!
       </h1>
     </div>
   )
