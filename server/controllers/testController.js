@@ -1,5 +1,3 @@
 exports.getTest = (req, res) => {
-    res.send({
-        message: 'Hello from Express!'
-    });
+    res.json({ status: 'ok' });
 };
