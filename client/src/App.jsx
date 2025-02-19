@@ -10,6 +10,9 @@ function App() {
       <div className="flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow">
+          <div className="text-center text-3xl text-blue-500 my-4">
+            wsh mgl
+          </div>
               <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/about" element={<AboutPage />} />
