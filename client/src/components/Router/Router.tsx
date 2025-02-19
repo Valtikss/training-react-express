@@ -1,0 +1,48 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import About from "@/pages/About";
+import Footer from "@components/Footer";
+import Header from "@components/Header";
+import Home from "@/pages/Home";
+import NotFound from "@/pages/NotFound";
+
+const AppRouter = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Header />
+              <Home />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <>
+              <Header />
+              <About />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <>
+              <Header />
+              <NotFound />
+              <Footer />
+            </>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default AppRouter;
