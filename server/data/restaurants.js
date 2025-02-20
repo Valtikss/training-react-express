@@ -35,7 +35,7 @@ const restaurants = [
 for (let i = 4; i <= 100; i++) {
   restaurants.push({
     id: i,
-    name: `Kebab Express ${i}`,
+    name: ["Bagdadi", "Kebab", "Palace", "Speed", "Star"][Math.floor(Math.random() * 5)] + " " + ["Express", "Grill", "King", "Royal", "Shop","Kebab","Durum"][Math.floor(Math.random() * 7)],
     address: `${Math.floor(Math.random() * 100)} Avenue des Grillades, 750${Math.floor(Math.random() * 20)} Paris, France`,
     cuisine: ["Turque", "Méditerranéenne", "Moyen-Orientale", "Indienne"][Math.floor(Math.random() * 4)],
     rating: (Math.random() * 1.5 + 3.5).toFixed(1),
