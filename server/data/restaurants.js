@@ -8,8 +8,8 @@ const restaurants = [
     phone: "+33 1 45 67 89 12",
     website: "https://lesultankebab.fr",
     image: "https://images.pexels.com/photos/604660/pexels-photo-604660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-},
-{
+  },
+  {
     id: 2,
     name: "Istanbul Grill",
     address: "18 Friedrichstraße, 10117 Berlin, Allemagne",
@@ -18,8 +18,8 @@ const restaurants = [
     phone: "+49 30 1234567",
     website: "https://istanbulgrill.de",
     image: "https://images.pexels.com/photos/53148/shish-kebab-meat-skewer-vegetable-skewer-meat-products-53148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-},
-{
+  },
+  {
     id: 3,
     name: "Ali Baba Kebab",
     address: "56 Via Torino, 00184 Rome, Italie",
@@ -28,38 +28,28 @@ const restaurants = [
     phone: "+39 06 2345 6789",
     website: "https://alibabakebab.it",
     image: "https://images.pexels.com/photos/8112396/pexels-photo-8112396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-},
-{
-    id: 4,
-    name: "El Rey Kebab",
-    address: "22 Gran Vía, 28013 Madrid, Espagne",
-    cuisine: "Moyen-Orientale",
-    rating: 4.5,
-    phone: "+34 91 876 5432",
-    website: "https://elreykebab.es",
-    image: "https://images.pexels.com/photos/8963961/pexels-photo-8963961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-},
-{
-    id: 5,
-    name: "The Kebab Factory",
-    address: "77 Oxford Street, London, UK",
-    cuisine: "Indienne",
-    rating: 4.3,
-    phone: "+44 20 9876 5432",
-    website: "https://thekebabfactory.co.uk",
-    image: "https://images.pexels.com/photos/5779370/pexels-photo-5779370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-},
-{
-    id: 6,
-    name: "Dönerland",
-    address: "21 Hauptstraße, 80331 Munich, Allemagne",
-    cuisine: "Turque",
-    rating: 4.6,
-    phone: "+49 89 8765 4321",
-    website: "https://donerland.de",
-    image: "https://images.pexels.com/photos/5779816/pexels-photo-5779816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-},
+  },
 ];
 
-  
+// Ajout de 97 restaurants supplémentaires
+for (let i = 4; i <= 100; i++) {
+  restaurants.push({
+    id: i,
+    name: `Kebab Express ${i}`,
+    address: `${Math.floor(Math.random() * 100)} Avenue des Grillades, 750${Math.floor(Math.random() * 20)} Paris, France`,
+    cuisine: ["Turque", "Méditerranéenne", "Moyen-Orientale", "Indienne"][Math.floor(Math.random() * 4)],
+    rating: (Math.random() * 1.5 + 3.5).toFixed(1),
+    phone: `+33 ${Math.floor(Math.random() * 9)} ${Math.floor(Math.random() * 9000) + 1000}`,
+    website: `https://kebabexpress${i}.fr`,
+    image: [
+      "https://images.pexels.com/photos/604660/pexels-photo-604660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/53148/shish-kebab-meat-skewer-vegetable-skewer-meat-products-53148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/8112396/pexels-photo-8112396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/8963961/pexels-photo-8963961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/5779370/pexels-photo-5779370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/5779816/pexels-photo-5779816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    ][Math.floor(Math.random() * 6)],
+  });
+}
+
 module.exports = restaurants;
