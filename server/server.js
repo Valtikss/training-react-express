@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Route test
 app.get('/api/test', (req, res) => {
-  res.json({ message: 'Hello from Express!' });
+  res.json({ message: 'Hello from Express Hamdulila!' });
 });
 
 // Lancement du serveur
