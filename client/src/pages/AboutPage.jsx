@@ -2,7 +2,8 @@ import React from 'react';
 
 const AboutPage = () => {
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center text-black p-6">
+        
+        <div className="pt-30 min-h-screen flex flex-col items-center justify-center text-black p-6">
             {/* Titre stylisé */}
             <h1 className="text-5xl text-white font-extrabold drop-shadow-[4px_4px_0px_#000] text-center">
                 🍢 À PROPOS DE KEBABZ 🍢

@@ -5,7 +5,7 @@ const Header = () => {
         <header className="fixed top-0 left-0 w-full bg-yellow-400 border-b-4 border-black p-5 flex justify-between items-center 
                            shadow-[8px_8px_0px_#000] z-50">
             {/* Titre animé */}
-            <h1 className="text-4xl font-extrabold text-black drop-shadow-[4px_4px_0px_#000] animate-wiggle">
+            <h1 className="text-4xl font-extrabold text-white drop-shadow-[4px_4px_0px_#000] animate-wiggle">
                 🍢 KEBABZ
             </h1>
 
@@ -43,3 +43,4 @@ const Header = () => {
 };
 
 export default Header;
+

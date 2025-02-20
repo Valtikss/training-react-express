@@ -19,7 +19,7 @@ const HomePage = () => {
     }, []);
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center animated-bg text-white p-6">
+        <div className="min-h-screen pt-30 flex flex-col items-center justify-center animated-bg text-white p-6">
             {/* Logo */}
             <img 
                 src={myImage} 
@@ -28,7 +28,7 @@ const HomePage = () => {
             />
 
             {/* Titre */}
-            <h1 className="text-4xl font-extrabold text-white mt-6">
+            <h1 className="text-4xl font-extrabold text-white mt-6 font-extrabold drop-shadow-[4px_4px_0px_#000]">
                 Bienvenue sur <span className="text-yellow-300">Kebabz</span>
             </h1>
 
