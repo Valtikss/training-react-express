@@ -1,12 +1,21 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 
 function App() {
   return (
-    <div className="p-4">
-      <h1 className="text-blue-500 text-2xl font-bold text-primary">
-        Hello Tailwind & World !
-      </h1>
-    </div>
-  )
+    <Router>
+        <Header />
+        <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+        </Routes>
+        <Footer />
+    </Router>
+  );
 }
 
-export default App
+export default App;
