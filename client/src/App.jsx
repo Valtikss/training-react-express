@@ -1,12 +1,20 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import AboutPage from './pages/AboutPage';
 
 function App() {
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold text-primary text-blue-500">
-        Attention ça teste ici !!!
-      </h1>
-    </div>
-  )
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/home" element={<HomePage />} />
+        <Route path='/about' element={<AboutPage />} />
+      </Routes>
+      <Footer />
+    </Router>
+  );
 }
 
 export default App
