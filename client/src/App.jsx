@@ -1,13 +1,21 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/Homepage';
+import AboutPage from './pages/AboutPage';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="p-4">
-      <h1 className="text-2xl text-blue-500 font-bold text-primary">
-        Salam mes srhab, on est le 
-        <span className="text-red-500"> {new Date().toLocaleDateString()}</span>
-      </h1>
-    </div>
-  )
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        {/* on peut ajouter d'autres routes plus tard */}
+      </Routes>
+      <Footer />
+    </Router>
+  );
 }
 
-export default App
+export default App;
