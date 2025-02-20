@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+@keyframes stripesMove {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 200% 200%;
+    }
+  }
+  
+  .animated-bg {
+    background: repeating-linear-gradient(
+      42deg,
+      rgba(255, 215, 0, 0.15),
+      rgba(255, 215, 0, 0.15) 40px,
+      rgba(255, 69, 0, 0.15) 80px,
+      rgba(255, 69, 0, 0.15) 120px,
+      rgba(255, 215, 0, 0.15) 180px
+    );
+    background-size: 550%;
+    animation: stripesMove 17s linear infinite;
+  }
+  
