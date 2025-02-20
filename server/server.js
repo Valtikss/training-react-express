@@ -1,19 +1,20 @@
-// server/server.js
 const express = require('express');
 const cors = require('cors');
+const testRoutes = require('./routes/test');
 
 const app = express();
-const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
 
-// Route test
-app.get('/api/test', (req, res) => {
-  res.json({ message: 'J\'en sais rien j\'ai mis n\'importe quoi !' });
+app.use('/api', testRoutes);
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Something broke!' });
 });
 
-// Lancement du serveur
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
