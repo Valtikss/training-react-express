@@ -1,5 +1,3 @@
-import exp from "constants";
-
 const restaurants = [
   {
     id: 1,
@@ -9,7 +7,8 @@ const restaurants = [
     rating: 4.8,
     phone: "+33 1 23 45 67 89",
     website: "https://legourmetparisien.fr",
-    image: "https://images.pexels.com/photos/2574489/pexels-photo-2574489.jpeg",
+    image:
+      "https://images.pexels.com/photos/2574489/pexels-photo-2574489.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 2,
@@ -19,7 +18,8 @@ const restaurants = [
     rating: 4.6,
     phone: "+33 1 98 76 54 32",
     website: "https://sakurasushi.fr",
-    image: "https://images.pexels.com/photos/3763816/pexels-photo-3763816.jpeg",
+    image:
+      "https://images.pexels.com/photos/3763816/pexels-photo-3763816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 3,
@@ -29,7 +29,8 @@ const restaurants = [
     rating: 4.7,
     phone: "+39 02 1234 5678",
     website: "https://pastabella.it",
-    image: "https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg",
+    image:
+      "https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 4,
@@ -40,7 +41,7 @@ const restaurants = [
     phone: "+34 91 876 54 32",
     website: "https://elasador.com",
     image:
-      "https://images.pexels.com/photos/19911406/pexels-photo-19911406/free-photo-of-alcool-boire-verre-biere.jpeg",
+      "https://images.pexels.com/photos/19911406/pexels-photo-19911406/free-photo-of-alcool-boire-verre-biere.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 5,
@@ -51,7 +52,7 @@ const restaurants = [
     phone: "+44 20 1234 5678",
     website: "https://theburgerhouse.co.uk",
     image:
-      "https://images.pexels.com/photos/17312399/pexels-photo-17312399/free-photo-of-nourriture-aliments-repas-hamburger.jpeg",
+      "https://images.pexels.com/photos/17312399/pexels-photo-17312399/free-photo-of-nourriture-aliments-repas-hamburger.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 6,
@@ -62,7 +63,7 @@ const restaurants = [
     phone: "+1 212-555-7890",
     website: "https://dragonwok.com",
     image:
-      "https://images.pexels.com/photos/29325605/pexels-photo-29325605/free-photo-of-soiree-animee-au-restaurant-chinois-toyohashi.jpeg",
+      "https://images.pexels.com/photos/29325605/pexels-photo-29325605/free-photo-of-soiree-animee-au-restaurant-chinois-toyohashi.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 7,
@@ -72,7 +73,8 @@ const restaurants = [
     rating: 4.9,
     phone: "+91 11 9876 5432",
     website: "https://tajmahaldining.com",
-    image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg",
+    image:
+      "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 8,
@@ -82,7 +84,8 @@ const restaurants = [
     rating: 4.7,
     phone: "+52 55 1234 5678",
     website: "https://lataqueria.com.mx",
-    image: "https://images.pexels.com/photos/7772200/pexels-photo-7772200.jpeg",
+    image:
+      "https://images.pexels.com/photos/7772200/pexels-photo-7772200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 9,
@@ -92,7 +95,8 @@ const restaurants = [
     rating: 4.5,
     phone: "+44 56 4321 6587",
     website: "https://in-n-out.co.uk",
-    image: "https://images.pexels.com/photos/1123250/pexels-photo-1123250.jpeg",
+    image:
+      "https://images.pexels.com/photos/1123250/pexels-photo-1123250.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 10,
@@ -102,7 +106,8 @@ const restaurants = [
     rating: 4.8,
     phone: "+30 21 9876 5432",
     website: "https://horizonmediterranean.gr",
-    image: "https://images.pexels.com/photos/3649208/pexels-photo-3649208.jpeg",
+    image:
+      "https://images.pexels.com/photos/3649208/pexels-photo-3649208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
 ];
 
