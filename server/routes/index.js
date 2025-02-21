@@ -1,7 +1,7 @@
 const express = require('express');
-const testRoutes = require('./testRoutes')
+const restaurantsRoutes = require('./restaurantsRoutes');
 const router = express.Router();
 
-router.get('/test', testRoutes);
+router.use('/restaurants', restaurantsRoutes);
 
 module.exports = router; 
