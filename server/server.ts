@@ -12,7 +12,7 @@ dotenv.config({ path: __dirname + "/.env" });
 const app: Application = express();
 
 const PORT = process.env.PORT || 4000;
-const ENDPOINT_PREFIX = process.env.API_ENDPOINT_PREFIX || "/coucou";
+const ENDPOINT_PREFIX = process.env.API_ENDPOINT_PREFIX || "/api";
 
 app.use(cors());
 app.use(express.json());
