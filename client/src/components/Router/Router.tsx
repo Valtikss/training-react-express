@@ -5,6 +5,7 @@ import Footer from "@components/Footer";
 import Header from "@components/Header";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
+import Restaurants from "@/pages/Restaurants";
 
 const AppRouter = () => {
   return (
@@ -26,6 +27,16 @@ const AppRouter = () => {
             <>
               <Header />
               <About />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/restaurants"
+          element={
+            <>
+              <Header />
+              <Restaurants />
               <Footer />
             </>
           }

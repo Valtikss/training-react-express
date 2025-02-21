@@ -4,10 +4,18 @@
     "module": "ESNext",
     "jsx": "react-jsx",
     "strict": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "noEmit": true,
   },
   "include": [
     "src",
