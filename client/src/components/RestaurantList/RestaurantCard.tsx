@@ -2,6 +2,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Link,
   Stack,
   Typography,
 } from "@mui/material";
@@ -17,11 +18,8 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
 }: {
   restaurant: RestaurantDTO;
 }) => {
-  const handleCardClick = () => {
-    window.open(restaurant.website, "_blank");
-  };
   return (
-    <Card onClick={handleCardClick} sx={{ cursor: "pointer" }}>
+    <Card sx={{ border: "2px solid #ccc", boxShadow: "none" }}>
       <CardHeader
         avatar={
           <img
@@ -55,7 +53,10 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
           Phone: {restaurant.phone}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Website: {restaurant.website}
+          Website:{" "}
+          <Link target="_blank" href={restaurant.website}>
+            {restaurant.website}
+          </Link>
         </Typography>
       </CardContent>
     </Card>
