@@ -18,8 +18,14 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
 }: {
   restaurant: RestaurantDTO;
 }) => {
+  const handleCardClick = () => {
+    window.location.href = `/restaurants/${restaurant.id}`;
+  };
   return (
-    <Card sx={{ border: "2px solid #ccc", boxShadow: "none" }}>
+    <Card
+      sx={{ cursor: "pointer", border: "2px solid #ccc", boxShadow: "none" }}
+      onClick={handleCardClick}
+    >
       <CardHeader
         avatar={
           <img

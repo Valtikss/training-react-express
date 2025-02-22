@@ -5,6 +5,7 @@ import Footer from "@components/Footer";
 import Header from "@components/Header";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
+import Restaurant from "@/pages/Restaurant";
 import Restaurants from "@/pages/Restaurants";
 
 const AppRouter = () => {
@@ -37,6 +38,16 @@ const AppRouter = () => {
             <>
               <Header />
               <Restaurants />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/restaurants/:id"
+          element={
+            <>
+              <Header />
+              <Restaurant />
               <Footer />
             </>
           }
