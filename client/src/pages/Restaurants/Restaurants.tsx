@@ -1,20 +1,35 @@
+import { Box, Typography } from "@mui/material";
+
 import RestaurantList from "@components/RestaurantList";
-import { Typography } from "@mui/material";
+import SearchBar from "@components/SearchBar";
 import { useRestaurants } from "@/hooks";
+import { useState } from "react";
 
 const Restaurants = () => {
+  // Fetch restaurants
   const { restaurants, loading, error } = useRestaurants();
 
+  // Filter state
+  const [filter, setFilter] = useState<string>("");
+  const handleFilterChange = (value: string) => {
+    setFilter(value);
+  };
+
+  // Display loading or error message
   if (loading) {
     return <Typography variant="h4">Chargement des restaurants...</Typography>;
   }
   if (error) {
+    console.log("Error while fetching restaurants : ", error);
     return <Typography variant="h4">{error}</Typography>;
   }
 
   return (
     <>
-      <RestaurantList data={restaurants} />
+      <Box padding={2}>
+        <SearchBar value={filter} onChange={handleFilterChange} />
+      </Box>
+      <RestaurantList filter={filter} data={restaurants} />
     </>
   );
 };
