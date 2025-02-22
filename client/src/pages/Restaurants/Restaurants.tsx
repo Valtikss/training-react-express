@@ -1,19 +1,32 @@
 import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useLocalStorage, useRestaurants } from "@/hooks";
 
 import RestaurantList from "@components/RestaurantList";
 import SearchBar from "@components/SearchBar";
-import { useRestaurants } from "@/hooks";
-import { useState } from "react";
 
 const Restaurants = () => {
   // Fetch restaurants
   const { restaurants, loading, error } = useRestaurants();
+  // Local storage
+  const { getValue, setValue } = useLocalStorage<string>(
+    "restaurants-search-filter"
+  );
 
   // Filter state
   const [filter, setFilter] = useState<string>("");
   const handleFilterChange = (value: string) => {
     setFilter(value);
+    setValue(value);
   };
+
+  // Load filter from local storage
+  useEffect(() => {
+    const storedFilter = getValue();
+    if (storedFilter !== null && filter === "") {
+      setFilter(storedFilter);
+    }
+  }, []);
 
   // Display loading or error message
   if (loading) {
