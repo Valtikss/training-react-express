@@ -18,7 +18,7 @@ function Footer() {
                         <li><a href="/" className="text-gray-500 hover:text-black">Afficher toutes les villes</a></li>
                         <li><a href="/" className="text-gray-500 hover:text-black">Tous les pays</a></li>
                         <li><a href="/" className="text-gray-500 hover:text-black">Commandes à récupérer à proximité</a></li>
-                        <li><a href="/" className="text-gray-500 hover:text-black">À propos d'Uber&nbsp;Eats</a></li>
+                        <li><a href="/about" className="text-gray-500 hover:text-black">À propos d'Uber&nbsp;Eats</a></li>
                         <li><a href="/" className="text-gray-500 hover:text-black">Faites vos courses</a></li>
                     </ul>
                 </div>
