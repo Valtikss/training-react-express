@@ -3,13 +3,19 @@ import { getRestaurants } from "../services/restaurantsService";
 import Restaurant from './Restaurant';
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/animations/loading.json";
+import useRestaurantSearch from '../hooks/useRestaurantSearch';
 
 const RestaurantsList = () => {
     const [restaurants, setRestaurants] = useState([]);
-    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [searchTerm, setSearchTerm] = useState("");
+    
+    const {
+        searchTerm,
+        filteredRestaurants,
+        handleSearchChange,
+        handleClearSearch
+    } = useRestaurantSearch(restaurants);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,7 +25,6 @@ const RestaurantsList = () => {
                 const response = await getRestaurants();
                 const restaurantsData = Array.isArray(response.data) ? response.data : [];
                 setRestaurants(restaurantsData);
-                setFilteredRestaurants(restaurantsData);
             } catch (e) {
                 console.error('Error fetching data:', e);
                 setError('Failed to load restaurants. Please try again later.');
@@ -31,15 +36,6 @@ const RestaurantsList = () => {
         };
         fetchData();
     }, []);
-
-    useEffect(() => {
-        const filtered = restaurants.filter(restaurant =>
-            restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            restaurant.cuisine.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            restaurant.address.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        setFilteredRestaurants(filtered);
-    }, [searchTerm, restaurants]);
 
     const LoadingAnimation = () => (
         <div className="col-span-full flex flex-col items-center justify-center py-12">
@@ -64,19 +60,30 @@ const RestaurantsList = () => {
     }
 
     return (
-        <section>
-            <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold">Restaurants</h2>
-                <div className="relative w-72">
+        <section className="p-4 sm:p-6 lg:p-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold">Restaurants</h2>
+                <div className="relative w-full sm:w-72">
                     <input
                         type="text"
-                        placeholder="Rechercher un restaurant..."
+                        placeholder="Search restaurants..."
                         value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                        onChange={handleSearchChange}
+                        className="w-full px-4 py-2 pr-12 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 text-sm sm:text-base"
                     />
+                    {searchTerm && (
+                        <button
+                            onClick={handleClearSearch}
+                            className="absolute right-10 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                            title="Clear search"
+                        >
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    )}
                     <svg 
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" 
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" 
                         fill="none" 
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
@@ -91,7 +98,7 @@ const RestaurantsList = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                 {loading ? (
                     <LoadingAnimation />
                 ) : (
@@ -100,7 +107,7 @@ const RestaurantsList = () => {
                             <Restaurant key={restaurant.id} restaurant={restaurant} />
                         ))
                     ) : (
-                        <div className="col-span-full text-center py-8 text-gray-500">
+                        <div className="col-span-full text-center py-8 text-gray-500 text-sm sm:text-base">
                             {searchTerm ? 'No restaurants found matching your search' : 'No restaurants available'}
                         </div>
                     )
