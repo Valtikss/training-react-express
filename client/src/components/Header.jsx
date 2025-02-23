@@ -3,9 +3,11 @@ import React from "react";
 function Header() {
     return (
         <header className="flex items-center justify-between px-4 py-4 bg-white shadow-sm">
-            <h1 className="text-2xl font-medium">
-                Uber <strong className="font-bold">Eats</strong>
-            </h1>
+            <a href="/home">
+                <h1 className="text-2xl font-medium">
+                    Uber <strong className="font-bold">Eats</strong>
+                </h1>
+            </a>
 
             <div className="flex items-center gap-3 px-3 py-2 bg-gray-50 rounded-full">
                 <button className="px-3 py-1 font-medium text-black bg-white rounded-full shadow-sm hover:bg-gray-50">

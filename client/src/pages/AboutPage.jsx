@@ -1,51 +1,88 @@
 import React from "react";
+import aboutImage from "../assets/images/about.jpg";
+import about1Image from "../assets/images/about_1.jpg";
+import about2Image from "../assets/images/about_2.jpg";
+import about3Image from "../assets/images/about_3.jpg";
 
 function AboutPage() {
     return (
         <div className="min-h-screen flex flex-col">            
             <main className="flex-1">
-                <div className="relative h-[500px] mb-16">
+                <div className="relative h-[250px] sm:h-[350px] lg:h-[450px] mb-8 sm:mb-12 lg:mb-16">
                     <div className="absolute inset-0">
                         <img 
-                            src="../assets/about.jpg"
+                            src={aboutImage}
                             alt="Delicious food spread"
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
                     </div>
-                    <div className="relative max-w-7xl mx-auto px-4 h-full content-center items-center">
-                        <h1 className="text-5xl font-bold text-white max-w-2xl mb-24">
+                    <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold max-w-2xl mb-3 sm:mb-4">
                             Fonctionnement d'Uber Eats
                         </h1>
-                        <h2 className="text-1xl font-solid text-white maw-w-1l">
+                        <h2 className="text-sm sm:text-base lg:text-lg max-w-xl">
                             Uber Eats est un moyen simple de vous faire livrer vos repas préférés.
                         </h2>
                     </div>
                 </div>
 
-                <div className="max-w-7xl mx-auto px-4 mb-16">
-                    <h1 className="text-5xl font-bold max-w-2l mb-24">Comment utiliser l'application Uber Eats</h1>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                        <div>
-                            <div className="aspect-square bg-gray-100 rounded-xl animate-pulse"></div>
-                            <h2 className="text-2xl mb-6">Faites votre choix</h2>
-                            <p className="text-gray-600 leading-relaxed">
-                            Uber Eats rassemble des centaines de restaurants. Lorsque vous ouvrez l'application, vous pouvez les faire défiler en quête d'inspiration, mais aussi rechercher un restaurant ou un type de cuisine si vous savez ce dont vous avez envie. Vous avez trouvé un plat qui vous plaît ? Il vous suffit d'appuyer dessus pour l'ajouter à votre commande.
-                            </p>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 lg:mb-24">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold max-w-2xl mb-8 sm:mb-12 lg:mb-16">
+                        Comment utiliser l'application Uber Eats
+                    </h2>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
+                        <div className="space-y-4 sm:space-y-6">
+                            <div className="aspect-square rounded-2xl overflow-hidden shadow-md">
+                                <img 
+                                    src={about1Image}
+                                    alt="Choisir son repas"
+                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+                            <div className="space-y-2 sm:space-y-3">
+                                <h3 className="text-lg sm:text-xl font-semibold">Faites votre choix</h3>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    Uber Eats rassemble des centaines de restaurants. Lorsque vous ouvrez l'application, 
+                                    vous pouvez les faire défiler en quête d'inspiration, mais aussi rechercher un restaurant 
+                                    ou un type de cuisine si vous savez ce dont vous avez envie.
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <div className="aspect-square bg-gray-100 rounded-xl animate-pulse"></div>
-                            <h2 className="text-2xl mb-6">Commandez</h2>
-                            <p className="text-gray-600 leading-relaxed">
-                            Au moment du paiement, vous verrez votre adresse, l'heure de livraison estimée et le prix de la commande (taxes et frais de livraison inclus). Si tout vous semble correct, appuyez sur Commander : c'est aussi simple que ça ! Vous pouvez utiliser les mêmes moyens de paiement que pour les courses avec Uber.
-                            </p>
+
+                        <div className="space-y-4 sm:space-y-6">
+                            <div className="aspect-square rounded-2xl overflow-hidden shadow-md">
+                                <img 
+                                    src={about2Image}
+                                    alt="Commander"
+                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+                            <div className="space-y-2 sm:space-y-3">
+                                <h3 className="text-lg sm:text-xl font-semibold">Commandez</h3>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    Au moment du paiement, vous verrez votre adresse, l'heure de livraison estimée et le prix 
+                                    de la commande. Si tout vous semble correct, appuyez sur Commander : c'est aussi simple que ça !
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <div className="aspect-square bg-gray-100 rounded-xl animate-pulse"></div>
-                            <h2 className="text-2xl mb-6">Suivez votre commande</h2>
-                            <p className="text-gray-600 leading-relaxed">
-                            Suivez votre commande dans l'application. Vous pourrez d'abord voir que le restaurant accepte la commande et commence à la préparer. Ensuite, lorsqu'elle sera quasiment prête, un coursier à proximité se dirigera vers le restaurant (en voiture, à vélo ou à scooter selon votre région) pour la prendre en charge. Enfin, il se rendra à votre adresse. Vous pourrez voir son nom et sa photo, ainsi que sa progression sur la carte.
-                            </p>
+
+                        <div className="space-y-4 sm:space-y-6">
+                            <div className="aspect-square rounded-2xl overflow-hidden shadow-md">
+                                <img 
+                                    src={about3Image}
+                                    alt="Suivre sa commande"
+                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+                            <div className="space-y-2 sm:space-y-3">
+                                <h3 className="text-lg sm:text-xl font-semibold">Suivez votre commande</h3>
+                                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                                    Suivez votre commande dans l'application. Vous pourrez voir que le restaurant accepte 
+                                    la commande et commence à la préparer. Ensuite, lorsqu'elle sera quasiment prête, 
+                                    un coursier à proximité se dirigera vers le restaurant pour la prendre en charge.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
