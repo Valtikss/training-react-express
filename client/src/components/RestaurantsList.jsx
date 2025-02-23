@@ -7,7 +7,6 @@ import useRestaurantSearch from '../hooks/useRestaurantSearch';
 
 const RestaurantsList = () => {
     const [restaurants, setRestaurants] = useState([]);
-    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     
