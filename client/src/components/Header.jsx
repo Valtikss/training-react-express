@@ -38,6 +38,16 @@ export default function Header() {
               Contact
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/restaurants"
+              className={({ isActive }) =>
+                isActive ? 'text-blue-400' : 'hover:text-blue-300'
+              }
+            >
+              Restaurants
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>

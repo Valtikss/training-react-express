@@ -4,6 +4,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage'; // Nouvelle page
 import Header from './components/Header';
 import Footer from './components/Footer';
+import RestaurantsList from './components/RestaurantsList';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/restaurants" element={<RestaurantsList />} />
           </Routes>
         </main>
 
