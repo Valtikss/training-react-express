@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import RestaurantDetail from './pages/RestaurantDetail';
+import CreateRestaurant from './pages/CreateRestaurant';
 import AboutPage from './pages/AboutPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -14,6 +15,7 @@ function App() {
               <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/restaurants/:id" element={<RestaurantDetail />} />
+                  <Route path="/create" element={<CreateRestaurant  />} />
                   <Route path="/about" element={<AboutPage />} />
               </Routes>
           </main>
