@@ -1,4 +1,4 @@
-import * as tile from '../api/testApi';
+import * as tile from '../api/restaurantsApi';
 
 export async function getTest() {
     try {

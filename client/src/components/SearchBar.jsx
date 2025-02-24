@@ -1,8 +1,9 @@
-import React from "react";
 import { Search } from "lucide-react";
+import PropTypes from 'prop-types';
 
 const SearchBar = ({ value, onChange }) => {
   return (
+    // Barre de recherche stylisée
     <div className="relative w-full max-w-lg mb-6">
       {/* Input stylisé */}
       <input
@@ -24,6 +25,11 @@ const SearchBar = ({ value, onChange }) => {
       />
     </div>
   );
+
+};
+SearchBar.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

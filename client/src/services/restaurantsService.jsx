@@ -7,3 +7,11 @@ export async function getAllRestaurants() {
         console.error('Error fetching data:', error);
     }
 }
+
+export async function getRestaurantById(id) {
+    try {
+        return await restaurants.getRestaurantById(id);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
