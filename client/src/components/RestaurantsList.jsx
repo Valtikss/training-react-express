@@ -16,6 +16,13 @@ const RestaurantsList = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        const savedSearchTerm = localStorage.getItem("searchTerm");
+        if (savedSearchTerm) {
+            setSearchTerm(savedSearchTerm);
+        }
+    }, []);
+
+    useEffect(() => {
         const fetchRestaurants = async () => {
             const controller = new AbortController(); // Protection contre les fuites mémoire
             try {
@@ -48,6 +55,10 @@ const RestaurantsList = () => {
         return () => clearTimeout(timer); // Nettoyage si l’utilisateur tape rapidement
     }, [searchTerm, restaurants]);
 
+    useEffect(() => {
+        localStorage.setItem("searchTerm", searchTerm);
+    }, [searchTerm]);
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-primary p-4">
             <h1 className="text-4xl font-bold mb-4">Restaurants</h1>
@@ -60,7 +71,15 @@ const RestaurantsList = () => {
             ) : error ? (
                 <p className="text-lg text-red-500 bg-white shadow-md p-4 rounded-lg">{error}</p>
             ) : (
-                <div className="flex flex-wrap justify-center animate-fadeIn">
+                <div className="
+                    grid 
+                    grid-cols-1 
+                    gap-4 
+                    w-full
+                    md:grid-cols-2 
+                    lg:grid-cols-3 
+                    xl:grid-cols-4
+                ">
                     {filteredRestaurants.length > 0 ? (
                         filteredRestaurants.map((restaurant) => (
                         <Card key={restaurant.id} restaurant={restaurant} />
