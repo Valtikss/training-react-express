@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
 // SERVICES
 import { getAllRestaurants } from '../services/restaurantsService';
@@ -82,7 +83,13 @@ const RestaurantsList = () => {
                 ">
                     {filteredRestaurants.length > 0 ? (
                         filteredRestaurants.map((restaurant) => (
-                        <Card key={restaurant.id} restaurant={restaurant} />
+                            <Link 
+                                key={restaurant.id} 
+                                to={`/restaurants/${restaurant.id}`} 
+                                className="m-2"
+                            >
+                                <Card key={restaurant.id} restaurant={restaurant} />
+                            </Link>
                         ))
                     ) : (
                         <p className="text-gray-600">Aucun restaurant ne correspond à votre recherche.</p>
