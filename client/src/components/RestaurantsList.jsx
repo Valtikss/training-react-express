@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 // SERVICES
 import { getRestaurants } from '../services/restaurantsService';
@@ -64,6 +65,11 @@ const RestaurantsList = () => {
                             <a href={restaurant.website} className="text-blue-500" target="_blank" rel="noopener noreferrer">
                                 Site Web
                             </a>
+                            <div className='flex justify-end mt-0'>
+                                <Link to={`/restaurants/${restaurant.id}`} className="mt-2 inline-block bg-blue-500 text-white px-4 py-1 rounded">
+                                    Détails
+                                </Link>
+                            </div>
                         </div>
                     ))
                 ) : (
