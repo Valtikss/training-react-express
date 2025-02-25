@@ -4,8 +4,6 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import RestaurantsList from './components/RestaurantsList';
-
 
 function App() {
   return (
