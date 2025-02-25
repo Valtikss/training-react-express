@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
+// SERVICES
+import { getRestaurants } from '../services/restaurantsService';
 
 const RestaurantsList = () => {
     const [restaurants, setRestaurants] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/restaurants')
-            .then(response => setRestaurants(response.data))
-            .catch(error => console.error("Erreur lors de la récupération des restaurants :", error));
+        const fetchData = async () => {
+            try {
+                const data = await getRestaurants();
+                setRestaurants(data);
+            } catch (err) {
+                setError('Error fetching data. Please try again later.');
+            }
+        };
+        fetchData();
     }, []);
+
+    if (error) {
+        return <p className="text-red-500">{error}</p>;
+    }
 
     return (
         <div className="p-5">
