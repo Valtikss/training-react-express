@@ -6,7 +6,7 @@ import { getRestaurants } from '../services/restaurantsService';
 const RestaurantsList = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [isLoading, setIsLoading] = useState(true); // Ajout du loader
-    const [searchTerm, setSearchTerm] = useState(""); // État de la recherche
+    const [searchTerm, setSearchTerm] = useState(localStorage.getItem("searchTerm") || ""); // Charger la valeur depuis localStorage
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -22,6 +22,10 @@ const RestaurantsList = () => {
         };
         fetchData();
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem("searchTerm", searchTerm);
+    }, [searchTerm]);
 
     if (isLoading) {
         return <p className="text-center text-blue-500 text-xl">Chargement...</p>;
@@ -42,12 +46,12 @@ const RestaurantsList = () => {
             <input
                 type="text"
                 placeholder="Rechercher un restaurant..."
-                className="border p-2 rounded w-full mb-4"
+                className="border p-2 rounded w-full sm:w-3/4 md:w-1/2 mx-auto mb-4 block"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {filteredRestaurants.length > 0 ? (
                     filteredRestaurants.map((restaurant) => (
                         <div key={restaurant.id} className="border p-4 rounded shadow-lg">
