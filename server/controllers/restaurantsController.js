@@ -1,7 +1,16 @@
 const restaurants = require('../data/restaurants');
 
-const getRestaurants = (req, res) => {
-    res.json(restaurants);
+exports.getRestaurants = (req, res) => {
+    res.send(restaurants);
 };
 
-module.exports = { getRestaurants };
+exports.getRestaurantById = (req, res) => {
+    const restaurantId = parseInt(req.params.id); // Récupérer l'ID depuis l'URL
+    const restaurant = restaurants.find(r => r.id === restaurantId);
+
+    if (!restaurant) {
+        return res.status(404).json({ message: "Restaurant non trouvé" });
+    }
+
+    res.send(restaurant);
+};

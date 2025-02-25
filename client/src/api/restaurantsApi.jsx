@@ -9,3 +9,13 @@ export const fetchRestaurants = async () => {
         throw error;
     }
 };
+
+export const fetchRestaurantById = async (id) => {
+    try {
+        const response = await apiClient.get(`/restaurants/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error("Erreur lors de la récupération du restaurant :", error);
+        throw error;
+    }
+};

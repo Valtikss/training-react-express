@@ -12,9 +12,13 @@ const RestaurantDetail = () => {
         const fetchRestaurant = async () => {
             try {
                 const data = await getRestaurantById(id);
-                setRestaurant(data);
+                if (data) {
+                    setRestaurant(data);
+                } else {
+                    setError("Restaurant introuvable.");
+                }
             } catch (err) {
-                setError("Impossible de charger les détails du restaurant.");
+                setError("Erreur lors de la récupération du restaurant.");
             } finally {
                 setIsLoading(false);
             }
