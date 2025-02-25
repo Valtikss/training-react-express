@@ -1,10 +1,10 @@
-import React from 'react';
+import RestaurantsList from '../components/RestaurantsList';
 
 const HomePage = () => {
     return (
-        <div className="p-5">
-            <h2>Bienvenue sur la page d'accueil</h2>
-            <p>Ceci est la page principale de notre application React.</p>
+        <div className="container mx-auto p-4">
+            <h1 className="text-3xl font-bold text-center mb-6">Bienvenue sur notre application de restaurants</h1>
+            <RestaurantsList />
         </div>
     );
 };
