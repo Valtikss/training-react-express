@@ -18,3 +18,12 @@ export async function getRestaurants() {
         throw new Error('Failed to get restaurants');
     }
 }
+
+export async function getRestaurantById(id) {
+    try {
+        const response = await restaurants.getRestaurantById(id);
+        return response;
+    } catch(e) {
+        throw e;
+    }
+};
