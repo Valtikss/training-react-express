@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import RestaurantDetail from './pages/RestaurantDetail'; // Import du composant
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Header />
         <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/restaurants/:id" element={<RestaurantDetail />} />
             <Route path="/about" element={<AboutPage />} />
         </Routes>
         <Footer />
