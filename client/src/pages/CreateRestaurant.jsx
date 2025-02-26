@@ -20,6 +20,11 @@ const CreateRestaurant = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (!name || !address || !cuisine || !phone || !website || !image) {
+            setError('Veuillez remplir tous les champs.');
+            return;
+        }
+
         // Construire l’objet restaurant
         const newRestaurant = {
             name,
@@ -29,13 +34,16 @@ const CreateRestaurant = () => {
             website,
             image
         };
-
+            
         try {
             await createRestaurant(newRestaurant);
-            navigate('/'); // Rediriger vers la page d’accueil
+            navigate('/');
         } catch (err) {
-            console.error('Erreur lors de la création du restaurant :', err);
-            setError('Une erreur est survenue. Veuillez réessayer.');
+            if (err.status === 400 && err.data && err.data.error) {
+                setError(err.data.error);
+            } else {
+                setError('Une erreur est survenue. Veuillez réessayer.');
+            }
         }
     };
 

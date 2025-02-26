@@ -40,25 +40,75 @@ exports.getRestaurantById = (req, res) => {
 exports.createRestaurant = (req, res) => {
     const restaurants = loadRestaurants();
     const { name, address, cuisine, phone, website, image } = req.body;
-    if (!name || !address || !cuisine || !phone || !website || !image) {
-        res.status(400).send('Missing required fields');
-    } else {
-        const newId = restaurants.length > 0
-            ? Math.max(...restaurants.map((r) => r.id)) + 1
-            : 1;
 
-        const newRestaurant = {
-            id: newId,
-            name,
-            address,
-            cuisine,
-            rating: 0,
-            phone,
-            website,
-            image,
-        };
-        restaurants.push(newRestaurant);
-        saveRestaurants(restaurants);
-        res.status(201).send(newRestaurant);
+    // Valider les champs
+    const error = validateRestaurantData({ name, address, cuisine, phone, website, image });
+    if (error) {
+        return res.status(400).json({ error });
     }
+
+    // Générer un nouvel ID
+    const newId = restaurants.length > 0
+        ? Math.max(...restaurants.map((r) => r.id)) + 1
+        : 1;
+
+    // Créer le restaurant
+    const newRestaurant = {
+        id: newId,
+        name,
+        address,
+        cuisine,
+        rating: 0,
+        phone,
+        website,
+        image,
+    };
+
+    restaurants.push(newRestaurant);
+    saveRestaurants(restaurants);
+
+    res.status(201).json(newRestaurant);
 };
+
+/**
+ * 🔍 Fonction de validation des données d'un restaurant
+ * @param {Object} data - Données du restaurant
+ * @returns {string|null} - Retourne un message d'erreur ou null si tout est valide
+ */
+function validateRestaurantData({ name, address, cuisine, phone, website, image }) {
+    if (!name || !address || !cuisine || !phone || !website || !image) {
+        return "Tous les champs sont obligatoires.";
+    }
+
+    if (!isValidString(name)) return "Le nom du restaurant ne peut pas être vide.";
+    if (!isValidString(address)) return "L'adresse du restaurant ne peut pas être vide.";
+    if (!isValidString(cuisine)) return "Le type de cuisine ne peut pas être vide.";
+    if (!isValidPhone(phone)) return "Le numéro de téléphone doit contenir 10 chiffres.";
+    if (!isValidURL(website)) return "L'URL du site web est invalide.";
+    if (!isValidURL(image)) return "L'URL de l'image est invalide.";
+
+    return null;
+}
+
+/**
+ * Vérifie si une chaîne est valide (non vide après trim)
+ */
+function isValidString(value) {
+    return typeof value === 'string' && value.trim().length > 0;
+}
+
+/**
+ * Vérifie si un numéro de téléphone est valide (10 chiffres)
+ */
+function isValidPhone(phone) {
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phone);
+}
+
+/**
+ * Vérifie si une URL est valide
+ */
+function isValidURL(url) {
+    const urlRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+    return urlRegex.test(url);
+}

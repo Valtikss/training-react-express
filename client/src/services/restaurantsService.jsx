@@ -26,6 +26,11 @@ export async function createRestaurant(restaurant) {
         return response;
     } catch (error) {
         console.error('Erreur lors de la création du restaurant:', error);
-        throw new Error('Erreur lors de la création du restaurant');
+
+        if (error.response) {
+            throw error.response;
+        } else {
+            throw new Error('Erreur de connexion au serveur');
+        }
     }
 };
