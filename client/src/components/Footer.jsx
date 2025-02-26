@@ -1,9 +1,9 @@
-function Footer() {
+const Footer = () => {
     return (
-        <footer style={{ padding: "10px", background: "#ddd", textAlign: "center", marginTop: "20px" }}>
-            <p>&copy; {new Date().getFullYear()} Mon Projet React. Tous droits réservés.</p>
+        <footer className="bg-primary text-white text-center py-4">
+            <p>© 2025 - Mini Uber Eats - By Valtiks</p>
         </footer>
     );
-}
+};
 
 export default Footer;
