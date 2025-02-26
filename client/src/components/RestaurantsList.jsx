@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getRestaurants } from "../services/restaurantsService";
 import Restaurant from './Restaurant';
 import Lottie from "lottie-react";
@@ -104,7 +105,9 @@ const RestaurantsList = () => {
                 ) : (
                     filteredRestaurants.length > 0 ? (
                         filteredRestaurants.map(restaurant => (
-                            <Restaurant key={restaurant.id} restaurant={restaurant} />
+                            <Link key={restaurant.id} to={`/restaurants/${restaurant.id}`}>
+                                <Restaurant key={restaurant.id} restaurant={restaurant} />
+                            </Link>
                         ))
                     ) : (
                         <div className="col-span-full text-center py-8 text-gray-500 text-sm sm:text-base">

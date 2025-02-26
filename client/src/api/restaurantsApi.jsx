@@ -1,6 +1,5 @@
 import apiClient from './api';
 
-export const getRestaurants = async () => {
-    const response = await apiClient.get("/restaurants");
-    return response;
-};
+export const getRestaurants = () => apiClient.get("/restaurants");
+
+export const getRestaurantById = (id) => apiClient.get(`/restaurants/${id}`);
