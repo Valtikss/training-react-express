@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 // server/server.ts
 import express, { Application } from "express";
 
