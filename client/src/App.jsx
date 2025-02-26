@@ -4,7 +4,8 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import RestaurantDetail from './pages/RestaurantDetail'; // Import du composant
+import RestaurantDetail from './pages/RestaurantDetail';
+import AddRestaurant from './pages/AddRestaurant';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/restaurants/:id" element={<RestaurantDetail />} />
+            <Route path="/add" element={<AddRestaurant />} />
             <Route path="/about" element={<AboutPage />} />
         </Routes>
         <Footer />
