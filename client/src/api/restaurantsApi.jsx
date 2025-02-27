@@ -19,3 +19,13 @@ export const fetchRestaurantById = async (id) => {
         throw error;
     }
 };
+
+export const createRestaurant = async (restaurantData) => {
+    try {
+        const response = await apiClient.post('/restaurants', restaurantData);
+        return response.data;
+    } catch (error) {
+        console.error("Erreur lors de l'ajout du restaurant :", error);
+        throw error;
+    }
+};
