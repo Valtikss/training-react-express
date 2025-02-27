@@ -27,3 +27,15 @@ exports.getRestaurantById = (req, res) => {
     }
     res.send(restaurant);
 };
+
+exports.createRestaurant = (req, res) => {
+  const restaurants = loadRestaurants();
+  const newRestaurant = req.body;
+
+  newRestaurant.id = restaurants.length ? restaurants[restaurants.length - 1].id + 1 : 1;
+  restaurants.push(newRestaurant);
+
+  fs.writeFileSync(dataPath, JSON.stringify(restaurants, null, 2), 'utf8');
+
+  res.status(201).send(newRestaurant);
+};

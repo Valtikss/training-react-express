@@ -27,3 +27,13 @@ export async function getRestaurantById(id) {
         throw e;
     }
 };
+
+export async function createRestaurant(restaurant) {
+    try {
+        const response = await restaurants.createRestaurant(restaurant);
+        return response;
+    } catch(error) {
+        console.error('Failed to create restaurant', error);
+        throw new Error('Failed to create restaurant');
+    }
+};

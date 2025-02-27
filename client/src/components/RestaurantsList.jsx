@@ -5,6 +5,7 @@ import Restaurant from './Restaurant';
 import Lottie from "lottie-react";
 import loadingAnimation from "../assets/animations/loading.json";
 import useRestaurantSearch from '../hooks/useRestaurantSearch';
+import { Plus } from "lucide-react";
 
 const RestaurantsList = () => {
     const [restaurants, setRestaurants] = useState([]);
@@ -115,6 +116,13 @@ const RestaurantsList = () => {
                         </div>
                     )
                 )}
+                <Link to="/create" className="hover:text-gray-400">
+                    <div className="flex items-center justify-center w-full h-full border-2 border-dashed border-gray-300 rounded-lg p-4">
+                        <span className="text-gray-500">
+                            <Plus color="green" size={20}/>
+                        </span>
+                    </div>                    
+                </Link>
             </div>
         </section>
     );
