@@ -8,3 +8,5 @@ type RestaurantDTO = {
   website: string;
   image: string;
 };
+
+type CreateRestaurantDTO = Omit<RestaurantDTO, "id">;

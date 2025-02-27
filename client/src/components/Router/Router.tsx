@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import About from "@/pages/About";
+import CreateRestaurant from "@/pages/CreateRestaurant";
 import Footer from "@components/Footer";
 import Header from "@components/Header";
 import Home from "@/pages/Home";
@@ -38,6 +39,16 @@ const AppRouter = () => {
             <>
               <Header />
               <Restaurants />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/restaurants/create"
+          element={
+            <>
+              <Header />
+              <CreateRestaurant />
               <Footer />
             </>
           }
