@@ -18,13 +18,32 @@ exports.getRestaurantById = (req, res) => {
 exports.createRestaurant = (req, res) => {
     const { name, address, cuisine, rating, phone, website, image } = req.body;
 
-    if (!name || !address || !cuisine) {
-        return res.status(400).json({ message: "Nom, adresse et type de cuisine sont requis." });
+    if (name.trim().length === 0) {
+        return res.status(400).json({ message: "Le nom est requis et ne peut pas être composé uniquement d'espaces." });
+    }
+
+    if (!address || !cuisine) {
+        return res.status(400).json({ message: "Adresse et type de cuisine sont requis." });
+    }
+
+    if (rating == undefined || rating < 0 || rating > 5) {
+        return res.status(400).json({ 
+            message: "La note doit être comprise entre 0 et 5." 
+        });
+    }
+
+    const phoneRegex = /^\+\d+$/;
+    if (phone && !phoneRegex.test(phone)) {
+        return res.status(400).json({ message: "Le numéro de téléphone doit commencer par '+' suivi uniquement de chiffres." });
+    }
+
+    if (website && !website.startsWith("https://")) {
+        return res.status(400).json({ message: "L'URL du site web doit commencer par 'https://'." });
     }
 
     const newRestaurant = {
-        id: restaurants.length + 1, // Génération d'un ID unique
-        name,
+        id: restaurants.length + 1,
+        name: name.trim(), // Supprime les espaces inutiles
         address,
         cuisine,
         rating: rating || 0,
