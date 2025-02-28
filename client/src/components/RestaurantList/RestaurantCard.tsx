@@ -23,7 +23,14 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
   };
   return (
     <Card
-      sx={{ cursor: "pointer", border: "2px solid #ccc", boxShadow: "none" }}
+      sx={{
+        cursor: "pointer",
+        border: "2px solid #ccc",
+        boxShadow: "none",
+        display: "flex",
+        flexDirection: "column",
+        height: 1,
+      }}
       onClick={handleCardClick}
     >
       <CardHeader
@@ -36,7 +43,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
         }
         title={
           <Stack spacing={0} justifyContent="center">
-            <Typography variant="h6" lineHeight={0.5}>
+            <Typography variant="h6" lineHeight={0.8}>
               {restaurant.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
@@ -45,10 +52,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
           </Stack>
         }
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {restaurant.name}
-        </Typography>
+      <CardContent sx={{ paddingTop: 1 }}>
         <Typography variant="body2" color="text.secondary">
           {restaurant.address}
         </Typography>

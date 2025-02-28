@@ -1,4 +1,8 @@
-import { createRestaurantSchema, emptyBodySchema } from "../dto";
+import {
+  createRestaurantSchema,
+  emptyBodySchema,
+  updateRestaurantSchema,
+} from "../dto";
 
 import { RestaurantController } from "../controllers";
 import { Router } from "express";
@@ -22,6 +26,18 @@ router.get(
   "/:id",
   zodValidate(emptyBodySchema),
   RestaurantController.getRestaurantById
+);
+
+router.put(
+  "/:id",
+  zodValidate(updateRestaurantSchema),
+  RestaurantController.updateRestaurant
+);
+
+router.delete(
+  "/:id",
+  zodValidate(emptyBodySchema),
+  RestaurantController.deleteRestaurant
 );
 
 export default router;

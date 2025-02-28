@@ -27,7 +27,7 @@ export const getRestaurantById = async (id: number): Promise<RestaurantDTO> => {
 };
 
 export const createRestaurant = async (
-  restaurant: CreateRestaurantDTO
+  restaurant: CreateOrUpdateRestaurantDTO
 ): Promise<RestaurantDTO> => {
   try {
     const response = await axios.post<RestaurantDTO>(
@@ -37,6 +37,31 @@ export const createRestaurant = async (
     return response.data;
   } catch (error) {
     console.error("Erreur lors de la création d'un restaurant:", error);
+    throw error;
+  }
+};
+
+export const updateRestaurant = async (
+  id: number,
+  restaurant: CreateOrUpdateRestaurantDTO
+): Promise<RestaurantDTO> => {
+  try {
+    const response = await axios.put<RestaurantDTO>(
+      `${API_BASE_URL}/restaurants/${id}`,
+      restaurant
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour d'un restaurant:", error);
+    throw error;
+  }
+};
+
+export const deleteRestaurant = async (id: number): Promise<void> => {
+  try {
+    await axios.delete(`${API_BASE_URL}/restaurants/${id}`);
+  } catch (error) {
+    console.error("Erreur lors de la suppression d'un restaurant:", error);
     throw error;
   }
 };
