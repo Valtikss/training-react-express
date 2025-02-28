@@ -39,3 +39,13 @@ export const updateRestaurant = async (id, restaurantData) => {
         throw error;
     }
 };
+
+export const deleteRestaurant = async (id) => {
+    try {
+        const response = await apiClient.delete(`/restaurants/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error("Erreur lors de la suppression du restaurant :", error);
+        throw error;
+    }
+};

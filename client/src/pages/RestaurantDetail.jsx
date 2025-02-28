@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getRestaurantById } from '../services/restaurantsService';
+import { removeRestaurant } from '../services/restaurantsService';
 
 const RestaurantDetail = () => {
     const { id } = useParams(); // Récupère l'id dans l'URL
@@ -8,6 +9,17 @@ const RestaurantDetail = () => {
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     const [error, setError] = useState(null);
+
+    const handleDelete = async () => {
+        if (window.confirm("Voulez-vous vraiment supprimer ce restaurant ?")) {
+            const result = await removeRestaurant(restaurant.id);
+            if (result) {
+                navigate("/"); // Redirection vers la liste des restaurants
+            } else {
+                alert("Erreur lors de la suppression du restaurant.");
+            }
+        }
+    };
 
     useEffect(() => {
         const fetchRestaurant = async () => {
@@ -44,12 +56,21 @@ const RestaurantDetail = () => {
             <a href={restaurant.website} className="text-blue-500" target="_blank" rel="noopener noreferrer">
                 Site Web
             </a>
-            <div className='flex justify-end mt-0'>
+            <div className='flex justify-between mt-4'>
                 <button 
                     onClick={() => navigate(`/edit/${restaurant.id}`)}
                     className="bg-yellow-500 text-white px-4 py-2 rounded"
                 >
                     Éditer
+                </button>
+            </div>
+
+            <div className="mt-4 flex justify-between">
+                <button 
+                    onClick={handleDelete} 
+                    className="bg-red-500 text-white px-4 py-2 rounded"
+                >
+                    Supprimer
                 </button>
             </div>
         </div>
