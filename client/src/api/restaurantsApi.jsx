@@ -29,3 +29,13 @@ export const createRestaurant = async (restaurantData) => {
         throw error;
     }
 };
+
+export const updateRestaurant = async (id, restaurantData) => {
+    try {
+        const response = await apiClient.put(`/restaurants/${id}`, restaurantData);
+        return response.data;
+    } catch (error) {
+        console.error("Erreur lors de la mise à jour du restaurant :", error);
+        throw error;
+    }
+};

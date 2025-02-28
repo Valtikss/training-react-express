@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { addRestaurant } from '../services/restaurantsService';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getRestaurantById, editRestaurant } from '../services/restaurantsService';
 
-const AddRestaurant = () => {
+const EditRestaurant = () => {
+    const { id } = useParams();
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
@@ -16,6 +17,18 @@ const AddRestaurant = () => {
 
     const [error, setError] = useState(null);
     const [formErrors, setFormErrors] = useState({});
+
+    useEffect(() => {
+        const fetchRestaurant = async () => {
+            const data = await getRestaurantById(id);
+            if (data) {
+                setFormData(data);
+            } else {
+                setError("Restaurant introuvable.");
+            }
+        };
+        fetchRestaurant();
+    }, [id]);
 
     const validateForm = () => {
         let errors = {};
@@ -43,27 +56,24 @@ const AddRestaurant = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(null);
-
+        
         if (!validateForm()) return;
 
         try {
-            const newRestaurant = await addRestaurant(formData);
-            if (newRestaurant) {
-                navigate('/'); // Redirige vers la liste des restaurants
-            } else {
-                setError("Erreur lors de l'ajout du restaurant.");
-            }
-        } catch (err) {
-            setError("Impossible d'ajouter le restaurant.");
+            await editRestaurant(id, formData);
+            navigate(`/restaurants/${id}`);
+        } catch {
+            setError("Échec de la mise à jour.");
         }
     };
 
+    if (error) return <p className="text-center text-red-500">{error}</p>;
+
+    if (!formData) return <p className="text-center">Chargement...</p>;
+
     return (
         <div className="p-5 max-w-lg mx-auto">
-            <h2 className="text-2xl font-bold mb-4">Ajouter un Restaurant</h2>
-
-            {error && <p className="text-red-500">{error}</p>}
+            <h2 className="text-2xl font-bold mb-4">Modifier un Restaurant</h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
@@ -98,10 +108,10 @@ const AddRestaurant = () => {
 
                 <input type="url" name="image" placeholder="URL de l'image" value={formData.image} onChange={handleChange} className="border p-2 rounded w-full" />
 
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded w-full">Ajouter</button>
+                <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded w-full">Sauvegarder</button>
             </form>
         </div>
     );
 };
 
-export default AddRestaurant;
+export default EditRestaurant;
