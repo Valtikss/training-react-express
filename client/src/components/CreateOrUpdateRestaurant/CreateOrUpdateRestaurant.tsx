@@ -55,7 +55,7 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
       case "rating":
         handleChangeRestaurant?.({
           ...restaurant,
-          rating: parseInt(value, 10),
+          rating: parseFloat(value),
         });
         break;
       case "address":
@@ -74,6 +74,14 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
         break;
     }
   };
+  const canSave =
+    restaurant.name &&
+    restaurant.cuisine &&
+    restaurant.address &&
+    restaurant.phone &&
+    restaurant.website &&
+    restaurant.image;
+
   return (
     <Box width={"100%"} height={"100%"}>
       <Stack justifyContent={"center"} alignItems={"center"} width={"100%"}>
@@ -117,6 +125,13 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
                 onChange={(e) =>
                   handleChangeRestaurantField("rating", e.target.value)
                 }
+                slotProps={{
+                  htmlInput: {
+                    min: 0,
+                    max: 5,
+                    step: 0.1,
+                  },
+                }}
                 fullWidth
               />
             </Grid>
@@ -187,6 +202,7 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
             <Button
               variant="contained"
               color="primary"
+              disabled={!canSave}
               onClick={handleSaveRestaurant}
             >
               Créer
