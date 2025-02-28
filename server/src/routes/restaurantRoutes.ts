@@ -1,20 +1,27 @@
-import { Request, Response, Router } from "express";
-import { getRestaurantById, getRestaurants } from "../services";
+import { createRestaurantSchema, emptyBodySchema } from "../dto";
+
+import { RestaurantController } from "../controllers";
+import { Router } from "express";
+import { zodValidate } from "../middlewares";
 
 const router = Router();
 
-router.get("/", (_: Request, res: Response) => {
-  res.json(getRestaurants());
-});
+router.get(
+  "/",
+  zodValidate(emptyBodySchema),
+  RestaurantController.getRestaurants
+);
 
-router.get("/:id", (req: Request, res: Response) => {
-  const id = parseInt(req.params.id);
-  const restaurant = getRestaurantById(id);
-  if (restaurant) {
-    res.json(restaurant);
-  } else {
-    res.status(404).send("Restaurant not found");
-  }
-});
+router.post(
+  "/",
+  zodValidate(createRestaurantSchema),
+  RestaurantController.createRestaurant
+);
+
+router.get(
+  "/:id",
+  zodValidate(emptyBodySchema),
+  RestaurantController.getRestaurantById
+);
 
 export default router;

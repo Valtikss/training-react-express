@@ -25,3 +25,18 @@ export const getRestaurantById = async (id: number): Promise<RestaurantDTO> => {
     throw error;
   }
 };
+
+export const createRestaurant = async (
+  restaurant: CreateRestaurantDTO
+): Promise<RestaurantDTO> => {
+  try {
+    const response = await axios.post<RestaurantDTO>(
+      `${API_BASE_URL}/restaurants`,
+      restaurant
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Erreur lors de la création d'un restaurant:", error);
+    throw error;
+  }
+};

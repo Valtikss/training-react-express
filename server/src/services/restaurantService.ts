@@ -1,3 +1,5 @@
+import { CreateRestaurantDTO, RestaurantDTO } from "../dto";
+
 import { restaurants } from "../data";
 
 const getRestaurants = () => {
@@ -9,4 +11,15 @@ const getRestaurantById = (id: Number) => {
   return restaurant;
 };
 
-export { getRestaurants, getRestaurantById };
+const createRestaurant = (restaurant: CreateRestaurantDTO): RestaurantDTO => {
+  const id = restaurants.length + 1;
+  const newRestaurant = { id, ...restaurant };
+  restaurants.push(newRestaurant);
+  return newRestaurant;
+};
+
+export const RestaurantService = {
+  get: getRestaurants,
+  getById: getRestaurantById,
+  create: createRestaurant,
+};

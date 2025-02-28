@@ -1,4 +1,6 @@
-const restaurants = [
+import { Restaurant } from "../types";
+
+const restaurants: Restaurant[] = [
   {
     id: 1,
     name: "Le Gourmet Parisien",

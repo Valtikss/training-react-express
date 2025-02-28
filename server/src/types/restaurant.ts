@@ -1,4 +1,4 @@
-type RestaurantDTO = {
+export type Restaurant = {
   id: number;
   name: string;
   address: string;
@@ -8,5 +8,3 @@ type RestaurantDTO = {
   website: string;
   image: string;
 };
-
-type CreateRestaurantDTO = Omit<RestaurantDTO, "id">;

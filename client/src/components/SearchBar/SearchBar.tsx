@@ -1,4 +1,4 @@
-import { Box, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 
 interface SearchBarProps {
   value: string;
@@ -11,21 +11,15 @@ const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => {
   };
 
   return (
-    <Box
-      width={"100%"}
-      sx={{ background: "#E3E3E3", borderRadius: 3 }}
-      padding={2}
-    >
-      <TextField
-        value={value}
-        onChange={handleChange}
-        id="search"
-        label="Rechercher un restaurant"
-        variant="outlined"
-        fullWidth
-        sx={{ background: "#ffffff", borderRadius: 1 }}
-      />
-    </Box>
+    <TextField
+      value={value}
+      onChange={handleChange}
+      id="search"
+      label="Rechercher un restaurant"
+      variant="outlined"
+      fullWidth
+      sx={{ background: "#ffffff", borderRadius: 1 }}
+    />
   );
 };
 
