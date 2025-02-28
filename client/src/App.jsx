@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import FanMadeline from "./pages/FanMadeline";
 import FanHelydia from "./pages/FanHelydia";
-import FanQueen from "./pages/FanQueen";
+import FanQueen from "./pages/FanElsa.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
  
@@ -18,7 +18,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/fanmadeline" element={<FanMadeline />} />
         <Route path="/fanHelydia" element={<FanHelydia />} />
-        <Route path="/archeeQueen" element={<FanQueen />} />
+        <Route path="/fanelsa" element={<FanQueen />} />
         {/* on peut ajouter d'autres routes plus tard */}
       </Routes>
       <Footer />
