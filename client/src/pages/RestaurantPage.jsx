@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { getRestaurantById } from '../services/restaurantsService';
 
-import { FaHeart, FaEllipsisH, FaStar } from 'react-icons/fa';
+import { FaHeart, FaEllipsisH, FaStar, FaEdit } from 'react-icons/fa';
 
 function RestaurantPage() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [restaurant, setRestaurant] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -70,6 +71,13 @@ function RestaurantPage() {
                 </div>
 
                 <div className="absolute top-5 right-5 flex space-x-4">
+                    <button 
+                        onClick={() => navigate(`/restaurants/${id}/edit`)}
+                        className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
+                        title="Modifier le restaurant"
+                    >
+                        <FaEdit className="text-gray-700 text-xl" />
+                    </button>
                     <button className="bg-white rounded-full p-2 shadow-md">
                         <FaHeart className="text-gray-700 text-xl" />
                     </button>

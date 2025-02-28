@@ -39,3 +39,22 @@ exports.createRestaurant = (req, res) => {
 
   res.status(201).send(newRestaurant);
 };
+
+exports.updateRestaurant = (req, res) => {
+    const restaurants = loadRestaurants();
+    const restaurantId = parseInt(req.params.id, 10);
+    const updatedData = req.body;
+
+    const index = restaurants.findIndex((r) => r.id === restaurantId);
+    if (index === -1) {
+        return res.status(404).send('Restaurant not found');
+    }
+
+    restaurants[index] = {
+        ...updatedData,
+        id: restaurantId
+    };
+
+    fs.writeFileSync(dataPath, JSON.stringify(restaurants, null, 2), 'utf8');
+    res.send(restaurants[index]);
+};

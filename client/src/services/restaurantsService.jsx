@@ -37,3 +37,13 @@ export async function createRestaurant(restaurant) {
         throw new Error('Failed to create restaurant');
     }
 };
+
+export async function updateRestaurant(id, restaurant) {
+    try {
+        const response = await restaurants.updateRestaurant(id, restaurant);
+        return response;
+    } catch(error) {
+        console.error('Failed to update restaurant', error);
+        throw new Error('Failed to update restaurant');
+    }
+};
