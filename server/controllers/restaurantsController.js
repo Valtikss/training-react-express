@@ -58,3 +58,27 @@ exports.updateRestaurant = (req, res) => {
     fs.writeFileSync(dataPath, JSON.stringify(restaurants, null, 2), 'utf8');
     res.send(restaurants[index]);
 };
+
+exports.deleteRestaurant = (req, res) => {
+  console.log('Delete request received for restaurant ID:', req.params.id);
+  const restaurants = loadRestaurants();
+  console.log('Loaded restaurants:', restaurants);
+  const restaurantId = parseInt(req.params.id, 10);
+  console.log('Looking for restaurant with ID:', restaurantId);
+
+  const index = restaurants.findIndex((r) => r.id === restaurantId);
+  console.log('Found restaurant at index:', index);
+
+  if (index === -1) {
+    console.log('Restaurant not found');
+    return res.status(404).send('Restaurant not found');
+  }
+
+  restaurants.splice(index, 1);
+  console.log('Restaurant removed, saving updated list');
+
+  fs.writeFileSync(dataPath, JSON.stringify(restaurants, null, 2), 'utf8');
+  console.log('File saved successfully');
+
+  res.status(204).send();
+};
