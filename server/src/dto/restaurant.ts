@@ -23,7 +23,5 @@ export const createRestaurantSchema = z.object({
 });
 export type CreateRestaurantDTO = z.infer<typeof createRestaurantSchema>;
 
-export const updateRestaurantSchema = createRestaurantSchema.extend({
-  id: z.number(),
-});
+export const updateRestaurantSchema = createRestaurantSchema.extend({});
 export type UpdateRestaurantDTO = z.infer<typeof updateRestaurantSchema>;

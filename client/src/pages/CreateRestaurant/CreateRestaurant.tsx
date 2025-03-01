@@ -2,23 +2,9 @@ import { Box } from "@mui/material";
 import CreateOrUpdateRestaurant from "@/components/CreateOrUpdateRestaurant";
 import { restaurant as RestaurantAPI } from "@/services/api";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-
 const CreateRestaurant = () => {
   const navigate = useNavigate();
-  const [restaurant, setRestaurant] = useState<CreateRestaurantDTO>({
-    name: "",
-    address: "",
-    cuisine: "",
-    rating: 0,
-    phone: "",
-    website: "",
-    image: "",
-  });
-  const handleChangeRestaurant = (restaurant: CreateRestaurantDTO) => {
-    setRestaurant(restaurant);
-  };
-  const handleSaveRestaurant = () => {
+  const handleSaveRestaurant = (restaurant: CreateOrUpdateRestaurantDTO) => {
     RestaurantAPI.create(restaurant).then((res) =>
       navigate(`/restaurants/${res.id}`)
     );
@@ -35,8 +21,6 @@ const CreateRestaurant = () => {
         padding={2}
       >
         <CreateOrUpdateRestaurant
-          restaurant={restaurant}
-          handleChangeRestaurant={handleChangeRestaurant}
           handleSaveRestaurant={handleSaveRestaurant}
           handleCancel={handleCancel}
         />

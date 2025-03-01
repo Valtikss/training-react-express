@@ -2,11 +2,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import About from "@/pages/About";
 import CreateRestaurant from "@/pages/CreateRestaurant";
+import EditRestaurant from "@/pages/EditRestaurant";
 import Footer from "@components/Footer";
 import Header from "@components/Header";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
-import Restaurant from "@/pages/Restaurant";
+import RestaurantDetail from "@/pages/RestaurantDetail";
 import Restaurants from "@/pages/Restaurants";
 
 const AppRouter = () => {
@@ -58,7 +59,17 @@ const AppRouter = () => {
           element={
             <>
               <Header />
-              <Restaurant />
+              <RestaurantDetail />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/restaurants/:id/edit"
+          element={
+            <>
+              <Header />
+              <EditRestaurant />
               <Footer />
             </>
           }

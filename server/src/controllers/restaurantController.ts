@@ -1,6 +1,6 @@
+import { CreateRestaurantDTO, UpdateRestaurantDTO } from "../dto";
 import { Request, Response } from "express";
 
-import { CreateRestaurantDTO } from "../dto";
 import { RestaurantService } from "../services";
 
 const RestaurantController = {
@@ -25,6 +25,32 @@ const RestaurantController = {
     const restaurant = RestaurantService.getById(id);
     if (restaurant) {
       res.json(restaurant);
+    } else {
+      res.status(404).send("Restaurant not found");
+    }
+  },
+
+  // Update a restaurant
+  updateRestaurant: async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id);
+    const REStaurant: UpdateRestaurantDTO = req.body;
+
+    const updatedRestaurant = RestaurantService.update(id, REStaurant);
+
+    if (updatedRestaurant) {
+      res.json(updatedRestaurant);
+    } else {
+      res.status(404).send("Restaurant not found");
+    }
+  },
+
+  // Delete a restaurant
+  deleteRestaurant: async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id);
+    const deletedRestaurant = RestaurantService.delete(id);
+
+    if (deletedRestaurant) {
+      res.json(deletedRestaurant);
     } else {
       res.status(404).send("Restaurant not found");
     }

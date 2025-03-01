@@ -6,6 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useEffect, useState } from "react";
 
 import Grid from "@mui/material/Grid2";
 
@@ -13,18 +14,12 @@ interface CreateOrUpdateRestaurantProps {
   /**
    * Restaurant to create or update
    */
-  restaurant: CreateRestaurantDTO;
-  /**
-   * Handle change for a restaurant
-   * @param restaurant Restaurant to update
-   * @returns void
-   */
-  handleChangeRestaurant: (restaurant: CreateRestaurantDTO) => void;
+  fetchedRestaurant?: RestaurantDTO;
   /**
    * Handle save restaurant
    * @returns void
    */
-  handleSaveRestaurant: () => void;
+  handleSaveRestaurant: (restaurant: CreateOrUpdateRestaurantDTO) => void;
   /**
    * Handle cancel
    * @returns void
@@ -33,11 +28,30 @@ interface CreateOrUpdateRestaurantProps {
 }
 
 const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
-  restaurant,
-  handleChangeRestaurant,
+  fetchedRestaurant,
   handleSaveRestaurant,
   handleCancel,
 }) => {
+  // State for restaurant
+  const [restaurant, setRestaurant] = useState<CreateOrUpdateRestaurantDTO>(
+    fetchedRestaurant || {
+      name: "",
+      address: "",
+      cuisine: "",
+      rating: 0,
+      phone: "",
+      website: "",
+      image: "",
+    }
+  );
+  const handleChangeRestaurant = (restaurant: CreateOrUpdateRestaurantDTO) => {
+    setRestaurant(restaurant);
+  };
+
+  const handleSave = () => {
+    handleSaveRestaurant(restaurant);
+  };
+
   /**
    * Handle change for a restaurant field
    *
@@ -45,42 +59,67 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
    * @param value Value to set
    */
   const handleChangeRestaurantField = (field: string, value: string) => {
+    const deconstructedRestaurant = {
+      name: restaurant?.name || "",
+      address: restaurant?.address || "",
+      cuisine: restaurant?.cuisine || "",
+      rating: restaurant?.rating || 0,
+      phone: restaurant?.phone || "",
+      website: restaurant?.website || "",
+      image: restaurant?.image || "",
+    };
     switch (field) {
       case "name":
-        handleChangeRestaurant?.({ ...restaurant, name: value });
+        handleChangeRestaurant?.({ ...deconstructedRestaurant, name: value });
         break;
       case "cuisine":
-        handleChangeRestaurant?.({ ...restaurant, cuisine: value });
+        handleChangeRestaurant?.({
+          ...deconstructedRestaurant,
+          cuisine: value,
+        });
         break;
       case "rating":
         handleChangeRestaurant?.({
-          ...restaurant,
+          ...deconstructedRestaurant,
           rating: parseFloat(value),
         });
         break;
       case "address":
-        handleChangeRestaurant?.({ ...restaurant, address: value });
+        handleChangeRestaurant?.({
+          ...deconstructedRestaurant,
+          address: value,
+        });
         break;
       case "phone":
-        handleChangeRestaurant?.({ ...restaurant, phone: value });
+        handleChangeRestaurant?.({ ...deconstructedRestaurant, phone: value });
         break;
       case "website":
-        handleChangeRestaurant?.({ ...restaurant, website: value });
+        handleChangeRestaurant?.({
+          ...deconstructedRestaurant,
+          website: value,
+        });
         break;
       case "image":
-        handleChangeRestaurant?.({ ...restaurant, image: value });
+        handleChangeRestaurant?.({ ...deconstructedRestaurant, image: value });
         break;
       default:
         break;
     }
   };
+
+  useEffect(() => {
+    if (fetchedRestaurant) {
+      setRestaurant(fetchedRestaurant);
+    }
+  }, [fetchedRestaurant]);
+
   const canSave =
-    restaurant.name &&
-    restaurant.cuisine &&
-    restaurant.address &&
-    restaurant.phone &&
-    restaurant.website &&
-    restaurant.image;
+    restaurant?.name &&
+    restaurant?.cuisine &&
+    restaurant?.address &&
+    restaurant?.phone &&
+    restaurant?.website &&
+    restaurant?.image;
 
   return (
     <Box width={"100%"} height={"100%"}>
@@ -93,7 +132,7 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
                 id="name"
                 label="Nom du restaurant"
                 variant="outlined"
-                value={restaurant.name}
+                value={restaurant?.name}
                 sx={{ background: "white", borderRadius: 1 }}
                 onChange={(e) =>
                   handleChangeRestaurantField("name", e.target.value)
@@ -106,7 +145,7 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
                 id="specialty"
                 label="Spécialité"
                 variant="outlined"
-                value={restaurant.cuisine}
+                value={restaurant?.cuisine}
                 sx={{ background: "white", borderRadius: 1 }}
                 onChange={(e) =>
                   handleChangeRestaurantField("cuisine", e.target.value)
@@ -121,7 +160,7 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
                 variant="outlined"
                 type="number"
                 sx={{ background: "white", borderRadius: 1 }}
-                value={restaurant.rating}
+                value={restaurant?.rating}
                 onChange={(e) =>
                   handleChangeRestaurantField("rating", e.target.value)
                 }
@@ -140,7 +179,7 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
                 id="address"
                 label="Adresse"
                 variant="outlined"
-                value={restaurant.address}
+                value={restaurant?.address}
                 sx={{ background: "white", borderRadius: 1 }}
                 onChange={(e) =>
                   handleChangeRestaurantField("address", e.target.value)
@@ -155,7 +194,7 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
                 variant="outlined"
                 type="phone"
                 sx={{ background: "white", borderRadius: 1 }}
-                value={restaurant.phone}
+                value={restaurant?.phone}
                 onChange={(e) =>
                   handleChangeRestaurantField("phone", e.target.value)
                 }
@@ -167,7 +206,7 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
                 id="website"
                 label="Site web"
                 variant="outlined"
-                value={restaurant.website}
+                value={restaurant?.website}
                 sx={{ background: "white", borderRadius: 1 }}
                 onChange={(e) =>
                   handleChangeRestaurantField("website", e.target.value)
@@ -180,7 +219,7 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
                 id="image"
                 label="Image"
                 variant="outlined"
-                value={restaurant.image}
+                value={restaurant?.image}
                 sx={{ background: "white", borderRadius: 1 }}
                 onChange={(e) =>
                   handleChangeRestaurantField("image", e.target.value)
@@ -203,9 +242,9 @@ const CreateOrUpdateRestaurant: React.FC<CreateOrUpdateRestaurantProps> = ({
               variant="contained"
               color="primary"
               disabled={!canSave}
-              onClick={handleSaveRestaurant}
+              onClick={handleSave}
             >
-              Créer
+              {fetchedRestaurant ? "Sauvegarder" : "Créer"}
             </Button>
           </Stack>
         </FormControl>

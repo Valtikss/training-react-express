@@ -1,4 +1,8 @@
-import { CreateRestaurantDTO, RestaurantDTO } from "../dto";
+import {
+  CreateRestaurantDTO,
+  RestaurantDTO,
+  UpdateRestaurantDTO,
+} from "../dto";
 
 import { restaurants } from "../data";
 
@@ -18,8 +22,29 @@ const createRestaurant = (restaurant: CreateRestaurantDTO): RestaurantDTO => {
   return newRestaurant;
 };
 
+const updateRestaurant = (id: number, restaurant: UpdateRestaurantDTO) => {
+  const index = restaurants.findIndex((r) => r.id === id);
+  if (index === -1) {
+    return null;
+  }
+  restaurants[index] = { id, ...restaurant };
+  return restaurants[index];
+};
+
+const deleteRestaurant = (id: number) => {
+  const index = restaurants.findIndex((r) => r.id === id);
+  if (index === -1) {
+    return null;
+  }
+  const deletedRestaurant = restaurants[index];
+  restaurants.splice(index, 1);
+  return deletedRestaurant;
+};
+
 export const RestaurantService = {
   get: getRestaurants,
   getById: getRestaurantById,
   create: createRestaurant,
+  update: updateRestaurant,
+  delete: deleteRestaurant,
 };

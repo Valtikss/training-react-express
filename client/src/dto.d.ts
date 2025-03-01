@@ -9,4 +9,4 @@ type RestaurantDTO = {
   image: string;
 };
 
-type CreateRestaurantDTO = Omit<RestaurantDTO, "id">;
+type CreateOrUpdateRestaurantDTO = Omit<RestaurantDTO, "id">;
