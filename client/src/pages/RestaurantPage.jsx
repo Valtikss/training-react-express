@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import { getRestaurantById, deleteRestaurant } from '../services/restaurantsService';
+import { getPlats } from '../services/platsService';
 
 import { FaHeart, FaEllipsisH, FaStar, FaEdit, FaTrash } from 'react-icons/fa';
 
@@ -11,6 +12,8 @@ function RestaurantPage() {
     const [restaurant, setRestaurant] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [plats, setPlats] = useState([]);
+    const [platsLoading, setPlatsLoading] = useState(true);
 
     useEffect(() => {
         const fetchRestaurant = async () => {
@@ -25,7 +28,19 @@ function RestaurantPage() {
             }
         };
 
+        const fetchPlats = async () => {
+            try {
+                const response = await getPlats();
+                setPlats(response.data);
+            } catch (error) {
+                console.error('Error fetching plats:', error);
+            } finally {
+                setPlatsLoading(false);
+            }
+        };
+
         fetchRestaurant();
+        fetchPlats();
     }, [id]);
 
     const handleDelete = async () => {
@@ -126,15 +141,24 @@ function RestaurantPage() {
             <div className="mt-10 bg-gray-200 p-6 rounded-lg">
                 <h2 className="text-2xl font-bold mb-6">Nos Plats</h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {[...Array(12)].map((_, index) => (
-                        <div key={index} className="bg-white p-4 rounded-lg shadow-md animate-pulse">
-                            <div className="w-full h-40 bg-gray-300 rounded-md mb-4"></div>
-                            <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
-                            <div className="h-4 bg-gray-300 rounded w-1/2"></div>
-                        </div>
-                    ))}
-                </div>
+                {platsLoading ? (
+                    <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        {plats.filter(plat => plat.restaurant_id === restaurant.id).map((plat) => (
+                            <div key={plat.id} className="bg-white p-4 rounded-lg shadow-md">
+                                <div className="w-full h-40 bg-gray-300 rounded-md mb-4">
+                                    <img src={plat.image} alt={plat.name} className="w-full h-full object-cover rounded-md" />
+                                </div>
+                                <h3 className="text-lg font-bold mb-2">{plat.name}</h3>
+                                <p className="text-gray-600">{plat.description}</p>
+                                <p className="text-gray-800 font-semibold mt-2">{plat.price} €</p>
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );
