@@ -24,4 +24,10 @@ router.get(
   DishController.getDishById
 );
 
+router.delete(
+  "/:restaurantId/dishes/:dishId",
+  zodValidate(emptyBodySchema),
+  DishController.deleteDish
+);
+
 export default router;

@@ -36,8 +36,23 @@ const createDish = (
   return newDish;
 };
 
+const deleteDish = (restaurantId: number, dishId: number): DishDTO | null => {
+  const restaurant = RestaurantService.getById(restaurantId);
+  if (!restaurant) {
+    return null;
+  }
+  const index = restaurant.dishes.findIndex((d) => d.id === dishId);
+  if (index === -1) {
+    return null;
+  }
+  const deletedDish = restaurant.dishes[index];
+  restaurant.dishes.splice(index, 1);
+  return deletedDish;
+};
+
 export const DishService = {
   get: getDishes,
   getById: getDishById,
   create: createDish,
+  delete: deleteDish,
 };

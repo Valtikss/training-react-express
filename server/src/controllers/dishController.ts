@@ -36,6 +36,18 @@ const DishController = {
       res.status(404).send("Dish not found");
     }
   },
+
+  // Delete a dish
+  deleteDish: async (req: Request, res: Response) => {
+    const restaurantId = parseInt(req.params.restaurantId);
+    const dishId = parseInt(req.params.dishId);
+    const deleted = DishService.delete(restaurantId, dishId);
+    if (!deleted) {
+      res.status(404).send("Dish or restaurant not found not found");
+      return;
+    }
+    res.status(200).json(deleted);
+  },
 };
 
 export default DishController;

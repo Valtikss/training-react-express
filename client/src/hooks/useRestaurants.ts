@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { restaurant } from "@/services/api";
+import { restaurantAPI } from "@/services/api";
 
 const useRestaurants = () => {
   const [restaurants, setRestaurants] = useState<RestaurantDTO[]>([]);
@@ -10,7 +10,7 @@ const useRestaurants = () => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const fetchedRestaurants = await restaurant.getAll();
+        const fetchedRestaurants = await restaurantAPI.getAll();
         setRestaurants(fetchedRestaurants);
         setLoading(false);
       } catch (err) {

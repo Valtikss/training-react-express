@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import CreateOrUpdateRestaurant from "@/components/CreateOrUpdateRestaurant";
-import { restaurant as RestaurantAPI } from "@/services/api";
+import { restaurantAPI as RestaurantAPI } from "@/services/api";
 import { useNavigate } from "react-router-dom";
 const CreateRestaurant = () => {
   const navigate = useNavigate();

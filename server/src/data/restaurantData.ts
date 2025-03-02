@@ -42,7 +42,7 @@ const restaurants: Restaurant[] = [
       "https://images.pexels.com/photos/3763816/pexels-photo-3763816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     dishes: [
       {
-        id: 3,
+        id: 1,
         name: "Sushi Platter",
         price: 30.0,
         description: "Assorted sushi platter with fresh fish.",
@@ -50,7 +50,7 @@ const restaurants: Restaurant[] = [
           "https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        id: 4,
+        id: 2,
         name: "Miso Soup",
         price: 5.0,
         description: "Traditional Japanese soup with tofu and seaweed.",
@@ -71,7 +71,7 @@ const restaurants: Restaurant[] = [
       "https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     dishes: [
       {
-        id: 5,
+        id: 1,
         name: "Spaghetti Carbonara",
         price: 18.0,
         description:
@@ -80,7 +80,7 @@ const restaurants: Restaurant[] = [
           "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        id: 6,
+        id: 2,
         name: "Tiramisu",
         price: 8.0,
         description: "Traditional Italian coffee-flavored dessert.",
@@ -101,7 +101,7 @@ const restaurants: Restaurant[] = [
       "https://images.pexels.com/photos/19911406/pexels-photo-19911406/free-photo-of-alcool-boire-verre-biere.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     dishes: [
       {
-        id: 7,
+        id: 1,
         name: "Asado",
         price: 35.0,
         description: "Traditional Argentine barbecue with various meats.",
@@ -109,7 +109,7 @@ const restaurants: Restaurant[] = [
           "https://images.pexels.com/photos/410648/pexels-photo-410648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        id: 8,
+        id: 2,
         name: "Empanadas",
         price: 12.0,
         description:
@@ -131,7 +131,7 @@ const restaurants: Restaurant[] = [
       "https://images.pexels.com/photos/17312399/pexels-photo-17312399/free-photo-of-nourriture-aliments-repas-hamburger.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     dishes: [
       {
-        id: 9,
+        id: 1,
         name: "Classic Burger",
         price: 15.0,
         description: "Juicy beef burger with lettuce, tomato, and cheese.",
@@ -139,7 +139,7 @@ const restaurants: Restaurant[] = [
           "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        id: 10,
+        id: 2,
         name: "Fries",
         price: 5.0,
         description: "Crispy golden fries.",
@@ -168,7 +168,7 @@ const restaurants: Restaurant[] = [
           "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        id: 12,
+        id: 2,
         name: "Spring Rolls",
         price: 8.0,
         description: "Crispy rolls filled with vegetables and meat.",
@@ -197,7 +197,7 @@ const restaurants: Restaurant[] = [
           "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        id: 14,
+        id: 2,
         name: "Naan",
         price: 5.0,
         description: "Traditional Indian flatbread.",
@@ -226,7 +226,7 @@ const restaurants: Restaurant[] = [
           "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        id: 16,
+        id: 2,
         name: "Guacamole",
         price: 8.0,
         description: "Fresh avocado dip with tomatoes, onions, and cilantro.",
@@ -255,7 +255,7 @@ const restaurants: Restaurant[] = [
           "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        id: 18,
+        id: 2,
         name: "Shepherd's Pie",
         price: 18.0,
         description: "Traditional British meat pie with mashed potatoes.",
@@ -285,7 +285,7 @@ const restaurants: Restaurant[] = [
           "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       },
       {
-        id: 20,
+        id: 2,
         name: "Greek Salad",
         price: 10.0,
         description:

@@ -1,3 +1,4 @@
+import { createDish, deleteDish, getDishById, getDishes } from "./dishesApi";
 import {
   createRestaurant,
   deleteRestaurant,
@@ -6,10 +7,17 @@ import {
   updateRestaurant,
 } from "./restaurantApi";
 
-export const restaurant = {
+export const restaurantAPI = {
   getAll: getRestaurants,
   getById: getRestaurantById,
   create: createRestaurant,
   update: updateRestaurant,
   delete: deleteRestaurant,
+};
+
+export const dishApi = {
+  getAll: getDishes,
+  getById: getDishById,
+  create: createDish,
+  delete: deleteDish,
 };
