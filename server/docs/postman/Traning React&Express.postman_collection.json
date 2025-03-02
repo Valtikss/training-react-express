@@ -81,6 +81,27 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}:{{port}}{{base_url}}/restaurants/{{restaurant_id}}/dishes/{{dish_id}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}{{base_url}}",
+									"path": [
+										"restaurants",
+										"{{restaurant_id}}",
+										"dishes",
+										"{{dish_id}}"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
