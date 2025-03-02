@@ -21,7 +21,7 @@ const RestaurantController = {
 
   // Get a restaurant by id
   getRestaurantById: async (req: Request, res: Response) => {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.restaurantId);
     const restaurant = RestaurantService.getById(id);
     if (restaurant) {
       res.json(restaurant);
@@ -32,7 +32,7 @@ const RestaurantController = {
 
   // Update a restaurant
   updateRestaurant: async (req: Request, res: Response) => {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.restaurantId);
     const REStaurant: UpdateRestaurantDTO = req.body;
 
     const updatedRestaurant = RestaurantService.update(id, REStaurant);
@@ -46,7 +46,7 @@ const RestaurantController = {
 
   // Delete a restaurant
   deleteRestaurant: async (req: Request, res: Response) => {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.restaurantId);
     const deletedRestaurant = RestaurantService.delete(id);
 
     if (deletedRestaurant) {

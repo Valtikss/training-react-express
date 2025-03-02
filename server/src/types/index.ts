@@ -1,3 +1,3 @@
-import { Restaurant } from "./restaurant";
+import { Dish, Restaurant } from "./restaurant";
 
-export { Restaurant };
+export { Restaurant, Dish };

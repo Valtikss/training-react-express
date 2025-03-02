@@ -23,19 +23,19 @@ router.post(
 );
 
 router.get(
-  "/:id",
+  "/:restaurantId",
   zodValidate(emptyBodySchema),
   RestaurantController.getRestaurantById
 );
 
 router.put(
-  "/:id",
+  "/:restaurantId",
   zodValidate(updateRestaurantSchema),
   RestaurantController.updateRestaurant
 );
 
 router.delete(
-  "/:id",
+  "/:restaurantId",
   zodValidate(emptyBodySchema),
   RestaurantController.deleteRestaurant
 );

@@ -1,3 +1,11 @@
+export type Dish = {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
+};
+
 export type Restaurant = {
   id: number;
   name: string;
@@ -7,4 +15,5 @@ export type Restaurant = {
   phone: string;
   website: string;
   image: string;
+  dishes: Dish[];
 };

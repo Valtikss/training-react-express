@@ -25,3 +25,23 @@ export type CreateRestaurantDTO = z.infer<typeof createRestaurantSchema>;
 
 export const updateRestaurantSchema = createRestaurantSchema.extend({});
 export type UpdateRestaurantDTO = z.infer<typeof updateRestaurantSchema>;
+
+export const dishSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  price: z.number(),
+  description: z.string(),
+  image: z.string(),
+});
+export type DishDTO = z.infer<typeof dishSchema>;
+
+export const createDishSchema = z.object({
+  name: z.string(),
+  price: z.number(),
+  description: z.string(),
+  image: z.string(),
+});
+export type CreateDishDTO = z.infer<typeof createDishSchema>;
+
+export const updateDishSchema = createDishSchema.extend({});
+export type UpdateDishDTO = z.infer<typeof updateDishSchema>;

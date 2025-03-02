@@ -17,21 +17,24 @@ const getRestaurantById = (id: Number) => {
 
 const createRestaurant = (restaurant: CreateRestaurantDTO): RestaurantDTO => {
   const id = restaurants.length + 1;
-  const newRestaurant = { id, ...restaurant };
+  const newRestaurant = { id, ...restaurant, dishes: [] };
   restaurants.push(newRestaurant);
   return newRestaurant;
 };
 
-const updateRestaurant = (id: number, restaurant: UpdateRestaurantDTO) => {
+const updateRestaurant = (
+  id: number,
+  restaurant: UpdateRestaurantDTO
+): RestaurantDTO | null => {
   const index = restaurants.findIndex((r) => r.id === id);
   if (index === -1) {
     return null;
   }
-  restaurants[index] = { id, ...restaurant };
+  restaurants[index] = { id, ...restaurant, dishes: restaurants[index].dishes };
   return restaurants[index];
 };
 
-const deleteRestaurant = (id: number) => {
+const deleteRestaurant = (id: number): RestaurantDTO | null => {
   const index = restaurants.findIndex((r) => r.id === id);
   if (index === -1) {
     return null;
