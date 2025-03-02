@@ -18,7 +18,7 @@ const FanHelydia = () => {
       {/* Image stylisée avec effet neon */}
       <div className="relative mt-6">
         <img 
-          src="https://rahft.com/wp-content/uploads/Helydia.jpg" 
+          src="https://i.pinimg.com/736x/9b/75/79/9b7579fe08d80192493bb645959f1840.jpg" 
           alt="Helydia" 
           className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-purple-500 shadow-[0px_0px_15px_#8b5cf6] transition-transform duration-300 hover:scale-110"
         />

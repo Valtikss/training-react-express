@@ -8,6 +8,7 @@ import FanHelydia from "./pages/FanHelydia";
 import FanQueen from "./pages/FanElsa.jsx";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+import RestaurantsPage from "./pages/RestaurantsPage";
  
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/fanmadeline" element={<FanMadeline />} />
         <Route path="/fanHelydia" element={<FanHelydia />} />
         <Route path="/fanelsa" element={<FanQueen />} />
+        <Route path="/restaurants" element={<RestaurantsPage />} />
         {/* on peut ajouter d'autres routes plus tard */}
       </Routes>
       <Footer />

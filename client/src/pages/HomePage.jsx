@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { MapPin, Utensils, Star, Phone, Globe, UtensilsCrossed} from "lucide-react";
 
 const Home = () => {
   return (
@@ -18,7 +19,7 @@ const Home = () => {
             <Link to="/fanHelydia">
                 {/* Image avec opacité réduite au hover */}
                 <img 
-                src="https://rahft.com/wp-content/uploads/Helydia.jpg" 
+                src="https://i.pinimg.com/736x/9b/75/79/9b7579fe08d80192493bb645959f1840.jpg" 
                 alt="Helydia"
                 className="w-72 h-72 md:w-80 md:h-80 object-cover rounded-3xl transition-opacity duration-300 group-hover:opacity-50"
                 />
@@ -52,7 +53,7 @@ const Home = () => {
         <div className="group relative overflow-hidden rounded-3xl shadow-lg hover:scale-105 transition-transform duration-300">
           <Link to="/fanelsa ">
             <img 
-              src="https://image.noelshack.com/fichiers/2025/09/5/1740776589-elsa.png" 
+              src="https://image.noelshack.com/fichiers/2025/09/6/1740843527-img-0614.jpg" 
               alt="Elsa "
               className="w-72 h-72 md:w-80 md:h-80 object-cover rounded-3xl transition-opacity duration-300 group-hover:opacity-50"
             />
@@ -70,9 +71,9 @@ const Home = () => {
           There is no judgement here. i promise..
         </p>
 
-        <Link to="/about">
+        <Link to="/restaurants">
           <button className="mt-6 bg-red-500 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg hover:scale-110 hover:bg-red-600 transition-transform duration-300">
-            About Us
+            Restaurants 
           </button>
         </Link>
       </div>

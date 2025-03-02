@@ -18,7 +18,7 @@ const FanHelydia = () => {
       {/* Image stylisée avec effet néon */}
       <div className="relative mt-6">
         <img 
-          src="https://image.noelshack.com/fichiers/2025/09/5/1740776589-elsa.png" 
+          src="https://image.noelshack.com/fichiers/2025/09/6/1740843527-img-0614.jpg" 
           alt="Elsa" 
           className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-indigo-500 shadow-[0px_0px_20px_#6366f1] transition-transform duration-300 hover:scale-110"
         />
