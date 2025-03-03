@@ -11,6 +11,7 @@ import Footer from "./components/Footer.jsx";
 import RestaurantsPage from "./pages/RestaurantsPage";
 import RestaurantDetail from "./pages/RestaurantDetail";
 import AddRestaurant from "./pages/AddRestaurant.jsx";
+import EditRestaurant from "./pages/EditRestaurant.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/restaurants" element={<RestaurantsPage />} />
         <Route path="/restaurants/:id" element={<RestaurantDetail />} />
         <Route path="/add-restaurant" element={<AddRestaurant />} />
+        <Route path="/restaurants/:id/edit" element={<EditRestaurant />} />
       </Routes>
       <Footer />
     </Router>

@@ -44,3 +44,23 @@ export const createRestaurant = async (restaurantData) => {
     throw error;
   }
 };
+
+export const updateRestaurant = async (id, restaurantData) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/restaurants/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(restaurantData),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Erreur lors de la mise à jour");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("API Error:", error);
+    throw error;
+  }
+};
