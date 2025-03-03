@@ -24,7 +24,7 @@ const RestaurantDetail = () => {
   }, [id]); 
 
   const handleGoBack = () => {
-    navigate(-1); 
+    navigate("/restaurants"); 
   };
 
   if (isLoading) return <Loader />;

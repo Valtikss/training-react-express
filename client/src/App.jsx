@@ -10,7 +10,8 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import RestaurantsPage from "./pages/RestaurantsPage";
 import RestaurantDetail from "./pages/RestaurantDetail";
- 
+import AddRestaurant from "./pages/AddRestaurant.jsx";
+
 function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/fanelsa" element={<FanQueen />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
         <Route path="/restaurants/:id" element={<RestaurantDetail />} />
+        <Route path="/add-restaurant" element={<AddRestaurant />} />
       </Routes>
       <Footer />
     </Router>
