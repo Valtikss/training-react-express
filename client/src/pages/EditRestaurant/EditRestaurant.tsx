@@ -5,6 +5,7 @@ import CreateOrUpdateRestaurant from "@/components/CreateOrUpdateRestaurant";
 import DishesList from "@/components/DishesList";
 import { restaurantAPI as RestaurantAPI } from "@/services/api";
 import { useRestaurant } from "@/hooks";
+import { useToastStore } from "@/store";
 
 const EditRestaurant = () => {
   // Get id from path /restaurants/:id/edit
@@ -17,10 +18,24 @@ const EditRestaurant = () => {
   const navigate = useNavigate();
   const { restaurant, loading, error } = useRestaurant(restaurantId);
 
+  const setToast = useToastStore((state) => state.setToast);
   const handleSaveRestaurant = (uRestaurant: CreateOrUpdateRestaurantDTO) => {
-    RestaurantAPI.update(restaurantId, uRestaurant).then((res) =>
-      navigate(`/restaurants/${res.id}`)
-    );
+    RestaurantAPI.update(restaurantId, uRestaurant)
+      .then((res) => {
+        navigate(`/restaurants/${res.id}`);
+        setToast({
+          message: "Restaurant mis à jour",
+          type: "success",
+          isOpen: true,
+        });
+      })
+      .catch((error) => {
+        setToast({
+          message: "Échec de la mise à jour du restaurant",
+          type: "error",
+          isOpen: true,
+        });
+      });
   };
   const handleCancel = () => {
     navigate("/restaurants");

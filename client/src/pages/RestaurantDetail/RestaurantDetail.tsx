@@ -5,6 +5,7 @@ import DishesList from "@/components/DishesList";
 import { restaurantAPI as RestaurantAPI } from "@/services/api";
 import RestaurantDescription from "./components/RestaurantDescription";
 import { useRestaurant } from "@/hooks";
+import { useToastStore } from "@/store";
 
 const RestaurantDetail = () => {
   // Get id from path /restaurants/:id
@@ -24,20 +25,28 @@ const RestaurantDetail = () => {
   };
 
   // Handle delete restaurant
+  const setToast = useToastStore((state) => state.setToast);
   const handleClickDelete = () => {
-    if (
-      window.confirm(
-        "Voulez-vous supprimer ce restaurant ? Cette action est irréversible."
-      )
-    ) {
+    window.confirm(
+      "Voulez-vous supprimer ce restaurant ? Cette action est irréversible."
+    ) &&
       RestaurantAPI.delete(restaurantId)
         .then(() => {
           navigate("/restaurants");
+          setToast({
+            message: "Restaurant supprimé avec succès",
+            type: "success",
+            isOpen: true,
+          });
         })
         .catch((error) => {
           console.error("Erreur lors de la suppression du restaurant:", error);
+          setToast({
+            message: "Erreur lors de la suppression du restaurant",
+            type: "error",
+            isOpen: true,
+          });
         });
-    }
   };
 
   // Display loading or error message
