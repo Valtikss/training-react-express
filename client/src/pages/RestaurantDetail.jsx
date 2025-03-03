@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getRestaurantById } from '../services/restaurantsService';
 import { removeRestaurant } from '../services/restaurantsService';
+import DishesList from '../components/DishesList';
 
 const RestaurantDetail = () => {
     const { id } = useParams(); // Récupère l'id dans l'URL
@@ -56,6 +57,9 @@ const RestaurantDetail = () => {
             <a href={restaurant.website} className="text-blue-500" target="_blank" rel="noopener noreferrer">
                 Site Web
             </a>
+
+            <DishesList restaurantId={restaurant.id} />
+            
             <div className='flex justify-between mt-4'>
                 <button 
                     onClick={() => navigate(`/edit/${restaurant.id}`)}
