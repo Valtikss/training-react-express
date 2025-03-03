@@ -89,7 +89,7 @@ const RestaurantsList = () => {
                       {restaurant.phone}
                     </p>
 
-                    <a
+                    <p
                       href={restaurant.website}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -97,7 +97,7 @@ const RestaurantsList = () => {
                     >
                       <Globe size={18} />
                       Visiter le site
-                    </a>
+                    </p>
                   </div>
                 </div>
               </Link>

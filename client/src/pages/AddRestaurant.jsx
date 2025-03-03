@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { addRestaurant } from "../services/restaurantsService";
 
 const AddRestaurant = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const AddRestaurant = () => {
     image: "",
   });
   const [errors, setErrors] = useState({});
-
+  const [errorMessage, setErrorMessage] = useState(null);
 
 
   const handleChange = (e) => {
@@ -30,18 +31,10 @@ const AddRestaurant = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch("http://localhost:4000/api/restaurants", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(restaurant),
-      });
-
-      if (!response.ok) throw new Error("Erreur lors de l'ajout");
-
-      const newRestaurant = await response.json();
+      const newRestaurant = await addRestaurant(restaurant);
       navigate(`/restaurants/${newRestaurant.id}`);
     } catch (error) {
-      console.error("Erreur:", error);
+      setErrorMessage(error.message);
     }
   };
 

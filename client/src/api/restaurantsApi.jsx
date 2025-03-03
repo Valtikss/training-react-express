@@ -24,3 +24,23 @@ export const getRestaurantById = async (id) => {
     throw error;
   }
 };
+
+export const createRestaurant = async (restaurantData) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/restaurants`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(restaurantData),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Erreur lors de l'ajout du restaurant");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("API Error:", error);
+    throw error;
+  }
+};
