@@ -73,7 +73,7 @@ const Home = () => {
 
         <Link to="/restaurants">
           <button className="mt-6 bg-red-500 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg hover:scale-110 hover:bg-red-600 transition-transform duration-300">
-            Restaurants 
+            Uber Hess  
           </button>
         </Link>
       </div>
