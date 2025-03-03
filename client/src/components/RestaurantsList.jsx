@@ -7,28 +7,32 @@ import SearchBar from "../components/SearchBar";
 const RestaurantsList = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null); 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(localStorage.getItem("LocalStorageValue") || "");
 
 
   useEffect(() => {
     setIsLoading(true);
-    setError(null); 
+    setError(null);
 
     fetchRestaurants()
       .then((data) => {
         setTimeout(() => {
           setRestaurants(data);
           setIsLoading(false);
-        }, 2000);
+        }, 1000);
       })
       .catch((err) => {
         console.error("Erreur API :", err);
         setError("Impossible de charger les restaurants. Veuillez réessayer.");
-        setIsLoading(false); 
+        setIsLoading(false);
       });
   }, []);
 
+  const handleSearchChange = (e) => {
+    setSearchQuery(e);
+    localStorage.setItem("LocalStorageValue", e);
+  };
 
   const filteredRestaurants = restaurants.filter((restaurant) =>
     restaurant.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -41,19 +45,14 @@ const RestaurantsList = () => {
         Nos Restaurants
       </h2>
 
+      <SearchBar e={searchQuery} onSearchChange={handleSearchChange} />
 
-      <SearchBar onSearchChange={setSearchQuery} />
-
-      {error && (
-        <p className="text-red-500 text-center">{error}</p>
-      )}
+      {error && <p className="text-red-500 text-center">{error}</p>}
 
       {isLoading ? (
         <Loader />
       ) : (
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
           {filteredRestaurants.length > 0 ? (
             filteredRestaurants.map((restaurant) => (
               <div
