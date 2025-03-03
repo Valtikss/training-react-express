@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { AxiosError } from "axios";
-import { restaurant as restaurantAPI } from "@/services/api";
+import { restaurantAPI } from "@/services/api";
 
 const useRestaurant = (id: number) => {
   const [restaurant, setRestaurant] = useState<RestaurantDTO>();

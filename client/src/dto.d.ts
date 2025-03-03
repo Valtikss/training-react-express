@@ -10,3 +10,13 @@ type RestaurantDTO = {
 };
 
 type CreateOrUpdateRestaurantDTO = Omit<RestaurantDTO, "id">;
+
+type DishDTO = {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
+};
+
+type CreateDishDTO = Omit<DishDTO, "id">;

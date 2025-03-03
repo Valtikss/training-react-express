@@ -1,9 +1,9 @@
-import { Box, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Box, Divider, Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 
 import CreateOrUpdateRestaurant from "@/components/CreateOrUpdateRestaurant";
-import { restaurant as RestaurantAPI } from "@/services/api";
+import DishesList from "@/components/DishesList";
+import { restaurantAPI as RestaurantAPI } from "@/services/api";
 import { useRestaurant } from "@/hooks";
 
 const EditRestaurant = () => {
@@ -45,6 +45,8 @@ const EditRestaurant = () => {
           handleSaveRestaurant={handleSaveRestaurant}
           handleCancel={handleCancel}
         />
+        <Divider sx={{ marginY: 2 }} />
+        <DishesList restaurantId={restaurantId} isEditMode />
       </Box>
     </Box>
   );

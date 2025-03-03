@@ -1,0 +1,346 @@
+{
+	"info": {
+		"_postman_id": "13940213-44c4-43ac-8eee-ff403cbd12d7",
+		"name": "Traning React&Express",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26129549"
+	},
+	"item": [
+		{
+			"name": "Restaurants",
+			"item": [
+				{
+					"name": "diishes",
+					"item": [
+						{
+							"name": "/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}:{{port}}{{base_url}}/restaurants/{{restaurant_id}}/dishes",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}{{base_url}}",
+									"path": [
+										"restaurants",
+										"{{restaurant_id}}",
+										"dishes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Courgette\",\n    \"price\": 52.0,\n    \"description\": \"Une courgette dans ton... assiette !\",\n    \"image\": \"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg-3.journaldesfemmes.com%2FPVIbH_pGxMFhGPl8oEkWr3DbtaY%3D%2F910x607%2Fsmart%2F3d4af6fac7234c2283fd7d9cf34e6981%2Fccmcms-jdf%2F10659281.jpg&f=1&nofb=1&ipt=a87d7a2eac890bac2dec16487547a1930fbfe70b4687282ed68893e6b3026b46&ipo=images\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}:{{port}}{{base_url}}/restaurants/{{restaurant_id}}/dishes",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}{{base_url}}",
+									"path": [
+										"restaurants",
+										"{{restaurant_id}}",
+										"dishes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}:{{port}}{{base_url}}/restaurants/{{restaurant_id}}/dishes/{{dish_id}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}{{base_url}}",
+									"path": [
+										"restaurants",
+										"{{restaurant_id}}",
+										"dishes",
+										"{{dish_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}:{{port}}{{base_url}}/restaurants/{{restaurant_id}}/dishes/{{dish_id}}",
+									"host": [
+										"{{host}}"
+									],
+									"port": "{{port}}{{base_url}}",
+									"path": [
+										"restaurants",
+										"{{restaurant_id}}",
+										"dishes",
+										"{{dish_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}{{base_url}}/restaurants",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_url}}",
+							"path": [
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"res = pm.response.json();",
+									"if (res && res.id) {",
+									"    pm.collectionVariables.set(\"restaurant_id\", res.id, Number)",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Chépa mais tkt\",\n    \"address\": \"15 Rue de la Stiko, 76089 Kekpar, Fronce\",\n    \"cuisine\": \"Belge\",\n    \"rating\": 5.0,\n    \"phone\": \"+34 1 23 45 67 89\",\n    \"website\": \"https://yapadcite.fr\",\n    \"image\": \"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.francetvinfo.fr%2Fimage%2F75e96dknk-6bb6%2F1500%2F843%2F12726811.jpg&f=1&nofb=1&ipt=fa82acdc685606054bea3402157e6c314063e8cb17cb9f75ad76a7bb5a97ed0c&ipo=images\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}{{base_url}}/restaurants",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_url}}",
+							"path": [
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/:id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"if (pm.collectionVariables.get(\"restaurant_id\") === null) {",
+									"    pm.collectionVariables.set(\"restaurant_id\", 1)",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}{{base_url}}/restaurants/{{restaurant_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_url}}",
+							"path": [
+								"restaurants",
+								"{{restaurant_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/:id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"if (pm.collectionVariables.get(\"restaurant_id\") === null) {",
+									"    pm.collectionVariables.set(\"restaurant_id\", 1)",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Chépa mais tkt donc pas\",\n    \"address\": \"15 Rue de la Stiko, 76089 Kekpar, Fronce\",\n    \"cuisine\": \"Belge\",\n    \"rating\": 4.7,\n    \"phone\": \"+34 1 23 45 67 90\",\n    \"website\": \"https://ahsiyaunsite.fr\",\n    \"image\": \"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.francetvinfo.fr%2Fimage%2F75e96dknk-6bb6%2F1500%2F843%2F12726811.jpg&f=1&nofb=1&ipt=fa82acdc685606054bea3402157e6c314063e8cb17cb9f75ad76a7bb5a97ed0c&ipo=images\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:{{port}}{{base_url}}/restaurants/{{restaurant_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_url}}",
+							"path": [
+								"restaurants",
+								"{{restaurant_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/:id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"if (pm.collectionVariables.get(\"restaurant_id\") === null) {",
+									"    pm.collectionVariables.set(\"restaurant_id\", 1)",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:{{port}}{{base_url}}/restaurants/{{restaurant_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}{{base_url}}",
+							"path": [
+								"restaurants",
+								"{{restaurant_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}:{{port}}{{base_url}}/status",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}{{base_url}}",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"key": "port",
+			"value": "4000",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "/api",
+			"type": "string"
+		},
+		{
+			"key": "restaurant_id",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "dish_id",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
