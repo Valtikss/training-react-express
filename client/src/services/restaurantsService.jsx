@@ -1,4 +1,5 @@
 import { getRestaurants } from "../api/restaurantsApi.jsx";
+import { getRestaurantById } from "../api/restaurantsApi.jsx";
 
 export const fetchRestaurants = async () => {
   try {
@@ -10,5 +11,14 @@ export const fetchRestaurants = async () => {
   } catch (error) {
     console.error("Service Error:", error);
     return [];
+  }
+};
+
+export const fetchRestaurantById = async (id) => {
+  try {
+    return await getRestaurantById(id);
+  } catch (error) {
+    console.error("Service Error:", error);
+    throw error;
   }
 };

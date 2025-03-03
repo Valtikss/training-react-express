@@ -12,3 +12,15 @@ export const getRestaurants = async () => {
     throw error;
   }
 };
+
+export const getRestaurantById = async (id) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/restaurants/${id}`);
+    if (!response.ok) throw new Error("Erreur lors du chargement du restaurant");
+
+    return await response.json();
+  } catch (error) {
+    console.error("API Error:", error);
+    throw error;
+  }
+};

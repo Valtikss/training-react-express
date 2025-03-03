@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
+import { fetchRestaurantById } from "../services/restaurantsService";
 
 const RestaurantDetail = () => {
   const { id } = useParams(); 
@@ -13,15 +14,14 @@ const RestaurantDetail = () => {
     setIsLoading(true);
     setError(null);
 
-    fetch(`http://localhost:4000/api/restaurants/${id}`) 
-      .then((res) => res.json())
+    fetchRestaurantById(id)
       .then((data) => setRestaurant(data))
       .catch((err) => {
         console.error("Erreur API :", err);
         setError("Impossible de charger ce restaurant.");
       })
       .finally(() => setIsLoading(false));
-  }, [id]); 
+  }, [id]);
 
   const handleGoBack = () => {
     navigate("/restaurants"); 
