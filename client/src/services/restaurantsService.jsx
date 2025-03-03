@@ -2,6 +2,7 @@ import { fetchRestaurants } from '../api/restaurantsApi';
 import { fetchRestaurantById } from '../api/restaurantsApi';
 import { createRestaurant } from '../api/restaurantsApi';
 import { updateRestaurant } from '../api/restaurantsApi';
+import { deleteRestaurant } from '../api/restaurantsApi';
 
 export const getRestaurants = async () => {
     try {
@@ -35,6 +36,15 @@ export const editRestaurant = async (id, restaurantData) => {
         return await updateRestaurant(id, restaurantData);
     } catch (error) {
         console.error("Erreur lors de la modification du restaurant :", error);
+        return null;
+    }
+};
+
+export const removeRestaurant = async (id) => {
+    try {
+        return await deleteRestaurant(id);
+    } catch (error) {
+        console.error("Erreur lors de la suppression du restaurant :", error);
         return null;
     }
 };

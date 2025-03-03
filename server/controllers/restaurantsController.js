@@ -102,3 +102,17 @@ exports.updateRestaurant = (req, res) => {
 
     res.json(restaurants[restaurantIndex]);
 };
+
+exports.deleteRestaurant = (req, res) => {
+    const restaurantId = parseInt(req.params.id);
+    const restaurantIndex = restaurants.findIndex(r => r.id === restaurantId);
+    
+    if (restaurantIndex === -1) {
+        return res.status(404).json({ message: "Restaurant non trouvé" });
+    }
+
+    // Supprimer le restaurant
+    restaurants.splice(restaurantIndex, 1);
+
+    res.json({ message: "Restaurant supprimé avec succès." });
+};
