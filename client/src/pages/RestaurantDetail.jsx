@@ -43,12 +43,23 @@ const RestaurantDetail = () => {
       <p className="text-gray-400 text-center mt-2">{restaurant.cuisine}</p>
       <p className="text-gray-500 text-center mt-4">{restaurant.description || "Aucune description disponible."}</p>
 
-      <button
-              onClick={handleGoBack}
-              className="mb-6 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-all"
-            >
-              ⬅ Retour
-      </button>
+      <div className="flex justify-Left gap-4">
+        <button
+                onClick={handleGoBack}
+                className="mb-6 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-all"
+              >
+                ⬅ Retour
+        </button>
+      </div>
+
+      <div className="flex justify-right gap-4">
+        <button
+            onClick={() => navigate(`/restaurants/${id}/edit`)} 
+            className="px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-lg shadow-md transition-all"
+          >
+            ✏️ Modifier
+          </button>
+      </div>
 
     </div>
   

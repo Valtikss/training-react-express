@@ -7,5 +7,6 @@ router.get("/:id", restaurantController.getRestaurantById);
 
 router.post("/", restaurantController.addRestaurant);
 
+router.put("/:id", restaurantController.updateRestaurant);
 
 module.exports = router;
