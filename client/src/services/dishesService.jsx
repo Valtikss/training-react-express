@@ -1,5 +1,7 @@
 
 import { getDishesByRestaurant } from "../api/dishesApi.jsx";
+import { addDishToRestaurant as apiAddDishToRestaurant } from "../api/dishesApi.jsx";
+
 
 export const fetchDishesByRestaurant = async (restaurantId) => {
   try {
@@ -9,3 +11,13 @@ export const fetchDishesByRestaurant = async (restaurantId) => {
     throw error;
   }
 };
+
+export const addDishToRestaurant = async (restaurantId, dishData) => {
+  try {
+    return await apiAddDishToRestaurant(restaurantId, dishData);
+  } catch (error) {
+    console.error("Service Error - addDishToRestaurant:", error);
+    throw error;
+  }
+};
+

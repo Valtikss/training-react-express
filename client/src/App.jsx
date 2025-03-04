@@ -12,6 +12,7 @@ import RestaurantsPage from "./pages/RestaurantsPage";
 import RestaurantDetail from "./pages/RestaurantDetail";
 import AddRestaurant from "./pages/AddRestaurant.jsx";
 import EditRestaurant from "./pages/EditRestaurant.jsx";
+import AddDish from "./pages/AddDishes.jsx";  
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/restaurants/:id" element={<RestaurantDetail />} />
         <Route path="/add-restaurant" element={<AddRestaurant />} />
         <Route path="/restaurants/:id/edit" element={<EditRestaurant />} />
+        <Route path="/restaurants/:id/add-dish" element={<AddDish />} />
       </Routes>
       <Footer />
     </Router>

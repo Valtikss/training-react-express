@@ -13,3 +13,22 @@ export const getDishesByRestaurant = async (restaurantId) => {
     return [];
   }
 };
+
+export const addDishToRestaurant = async (restaurantId, dishData) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/restaurants/${restaurantId}/dishes`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dishData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Erreur lors de l'ajout du plat");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("API Error:", error);
+    throw error;
+  }
+};
