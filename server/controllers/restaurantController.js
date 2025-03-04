@@ -1,12 +1,28 @@
-const restaurants = require("../data/restaurants");
+const fs = require("fs");
+const path = require("path");
 
-// Récupérer tous les restaurants
+const dataPath = path.join(__dirname, "../data/restaurants.json");
+
+// 🔹 Fonction pour lire le fichier JSON
+const getRestaurantsFromFile = () => {
+  const data = fs.readFileSync(dataPath, "utf8");
+  return JSON.parse(data);
+};
+
+// 🔹 Fonction pour écrire dans le fichier JSON
+const saveRestaurantsToFile = (restaurants) => {
+  fs.writeFileSync(dataPath, JSON.stringify(restaurants, null, 2), "utf8");
+};
+
+// ✅ Récupérer tous les restaurants
 exports.getAllRestaurants = (req, res) => {
+  const restaurants = getRestaurantsFromFile();
   res.json(restaurants);
 };
 
-// Récupérer un restaurant par son ID
+// ✅ Récupérer un restaurant par son ID
 exports.getRestaurantById = (req, res) => {
+  const restaurants = getRestaurantsFromFile();
   const { id } = req.params;
   const restaurant = restaurants.find((r) => r.id === parseInt(id));
 
@@ -17,18 +33,21 @@ exports.getRestaurantById = (req, res) => {
   res.json(restaurant);
 };
 
-
+// ✅ Ajouter un restaurant
 exports.addRestaurant = (req, res) => {
   const { name, address, cuisine, rating, phone, website, image } = req.body;
+  const restaurants = getRestaurantsFromFile();
 
   // Vérifier que tous les champs sont remplis
   if (!name || !address || !cuisine || !rating || !phone || !website || !image) {
     return res.status(400).json({ error: "Tous les champs sont obligatoires" });
   }
 
-  // Créer un nouvel objet restaurant
+  // Générer un nouvel ID unique
+  const newId = restaurants.length > 0 ? Math.max(...restaurants.map((r) => r.id)) + 1 : 1;
+
   const newRestaurant = {
-    id: restaurants.length + 1, 
+    id: newId,
     name,
     address,
     cuisine,
@@ -38,13 +57,17 @@ exports.addRestaurant = (req, res) => {
     image,
   };
 
-  restaurants.push(newRestaurant); 
-  res.status(201).json(newRestaurant); 
+  restaurants.push(newRestaurant);
+  saveRestaurantsToFile(restaurants);
+
+  res.status(201).json(newRestaurant);
 };
 
+// ✅ Mettre à jour un restaurant
 exports.updateRestaurant = (req, res) => {
   const { id } = req.params;
   const { name, address, cuisine, phone, rating, website, image } = req.body;
+  let restaurants = getRestaurantsFromFile();
 
   const restaurantIndex = restaurants.findIndex((r) => r.id === parseInt(id));
   if (restaurantIndex === -1) {
@@ -75,5 +98,24 @@ exports.updateRestaurant = (req, res) => {
     image,
   };
 
+  saveRestaurantsToFile(restaurants);
   res.json({ message: "Restaurant mis à jour avec succès", restaurant: restaurants[restaurantIndex] });
 };
+
+// ✅ Supprimer un restaurant
+exports.deleteRestaurant = (req, res) => {
+  const { id } = req.params;
+  let restaurants = getRestaurantsFromFile();
+
+  const restaurantIndex = restaurants.findIndex((r) => r.id === parseInt(id));
+  if (restaurantIndex === -1) {
+    return res.status(404).json({ message: "Restaurant non trouvé" });
+  }
+
+  // 🔥 Suppression du restaurant
+  restaurants.splice(restaurantIndex, 1);
+  saveRestaurantsToFile(restaurants);
+
+  res.json({ message: "Restaurant supprimé avec succès" });
+};
+

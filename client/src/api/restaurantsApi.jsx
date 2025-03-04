@@ -64,3 +64,21 @@ export const updateRestaurant = async (id, restaurantData) => {
     throw error;
   }
 };
+
+export const deleteRestaurant = async (id) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/restaurants/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error("Erreur lors de la suppression");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("API Error:", error);
+    throw error;
+  }
+};
+

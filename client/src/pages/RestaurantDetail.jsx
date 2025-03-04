@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import { fetchRestaurantById } from "../services/restaurantsService";
+import { removeRestaurant } from "../services/restaurantsService";
+
 
 const RestaurantDetail = () => {
   const { id } = useParams(); 
@@ -25,6 +27,17 @@ const RestaurantDetail = () => {
 
   const handleGoBack = () => {
     navigate("/restaurants"); 
+  };
+
+  const handleDelete = async () => {
+    if (!window.confirm("Voulez-vous vraiment supprimer ce restaurant ?")) return;
+
+    try {
+      await removeRestaurant(id);
+      navigate("/restaurants"); 
+    } catch (error) {
+      setError("Erreur lors de la suppression.");
+    }
   };
 
   if (isLoading) return <Loader />;
@@ -59,6 +72,13 @@ const RestaurantDetail = () => {
           >
             ✏️ Modifier
           </button>
+
+          <button
+          onClick={handleDelete}
+          className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg shadow-md transition-all"
+        >
+          🗑️ Supprimer
+        </button>
       </div>
 
     </div>
