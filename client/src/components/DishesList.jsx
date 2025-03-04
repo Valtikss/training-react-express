@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { getDishesByRestaurant } from '../services/dishesService';
+import { CartContext } from '../context/CartContext';
 
 const DishesList = ({ restaurantId }) => {
     const [dishes, setDishes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { addToCart } = useContext(CartContext);
 
     useEffect(() => {
         const loadDishes = async () => {
@@ -38,6 +40,12 @@ const DishesList = ({ restaurantId }) => {
                             <h4 className="font-semibold">{dish.name}</h4>
                             <p className="text-sm text-gray-600">{dish.description}</p>
                             <p className="text-green-500 font-bold">{dish.price} €</p>
+                            <button
+                                onClick={() => addToCart(dish)}
+                                className="bg-blue-500 text-white p-2 rounded mt-2"
+                            >
+                                Ajouter au panier
+                            </button>
                         </li>
                     ))}
                 </ul>
