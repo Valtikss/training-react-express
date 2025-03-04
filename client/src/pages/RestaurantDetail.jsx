@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import { fetchRestaurantById, removeRestaurant } from "../services/restaurantsService";
 import { fetchDishesByRestaurant } from "../services/dishesService";
+import AddDish from "../pages/AddDishes";
+
 
 const RestaurantDetail = () => {
   const { id } = useParams();
@@ -12,7 +14,14 @@ const RestaurantDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const fetchDishes = () => {
+    fetchDishesByRestaurant(id)
+      .then(setDishes)
+      .catch((err) => console.error("Erreur récupération des plats:", err));
+  };
+
   useEffect(() => {
+    fetchDishes();
     setIsLoading(true);
     setError(null);
 
@@ -73,6 +82,10 @@ const RestaurantDetail = () => {
         )}
       </div>
 
+      <div className="flex justify-center mt-6">
+        <AddDish onDishAdded={() => fetchDishes()} />
+      </div>
+
       {/* 🔹 Boutons d'action */}
       <div className="flex justify-between mt-6">
         <button
@@ -81,6 +94,8 @@ const RestaurantDetail = () => {
         >
           ⬅ Retour
         </button>
+
+        
 
         <div className="flex gap-4">
           <button

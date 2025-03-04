@@ -33,3 +33,28 @@ const restaurantDishes = dishes.filter((dish) => dish.restaurantId === parseInt(
 res.json(restaurantDishes);
 
 };
+
+exports.addDishToRestaurant = (req, res) => {
+  const { id } = req.params;
+  const { name, price, description, image } = req.body; 
+
+  if (!name || !price) {
+      return res.status(400).json({ message: "Le nom et le prix sont obligatoires." });
+  }
+
+  const dishes = getDishesFromFile(); 
+  const newDish = {
+      id: dishes.length + 1,
+      restaurantId: parseInt(id),
+      name,
+      price: parseFloat(price),
+      description: description || "",
+      image: image || "https://via.placeholder.com/150", 
+  };
+
+  dishes.push(newDish); 
+  fs.writeFileSync(dataPath, JSON.stringify(dishes, null, 2), "utf-8"); 
+
+  res.status(201).json(newDish);
+};
+
