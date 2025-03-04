@@ -8,22 +8,28 @@ import RestaurantDetail from './pages/RestaurantDetail';
 import AddRestaurant from './pages/AddRestaurant';
 import EditRestaurant from './pages/EditRestaurant';
 import Cart from './components/Cart';
+import OrderPage from './pages/OrderPage';
 
 function App() {
   return (
     <Router>
-        <Header />
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/restaurants/:id" element={<RestaurantDetail />} />
+        <Route path="/add" element={<AddRestaurant />} />
+        <Route path="/edit/:id" element={<EditRestaurant />} />
+        <Route path="/about" element={<AboutPage />} />
+      </Routes>
+      <div className="container mx-auto p-5">
+        <Cart />
+      </div>
+      <div className="container mx-auto p-5">
         <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/restaurants/:id" element={<RestaurantDetail />} />
-            <Route path="/add" element={<AddRestaurant />} />
-            <Route path="/edit/:id" element={<EditRestaurant />} />
-            <Route path="/about" element={<AboutPage />} />
+          <Route path="/commande" element={<OrderPage />} />
         </Routes>
-        <div className="container mx-auto p-5">
-            <Cart />
-        </div>
-        <Footer />
+      </div>
+      <Footer />
     </Router>
   );
 }
