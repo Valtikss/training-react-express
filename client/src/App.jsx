@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import RestaurantDetail from './pages/RestaurantDetail';
 import AddRestaurant from './pages/AddRestaurant';
 import EditRestaurant from './pages/EditRestaurant';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
             <Route path="/edit/:id" element={<EditRestaurant />} />
             <Route path="/about" element={<AboutPage />} />
         </Routes>
+        <div className="container mx-auto p-5">
+            <Cart />
+        </div>
         <Footer />
     </Router>
   );

@@ -3,12 +3,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getRestaurantById } from '../services/restaurantsService';
 import { removeRestaurant } from '../services/restaurantsService';
 import DishesList from '../components/DishesList';
+import AddDishForm from '../components/AddDishForm';
 
 const RestaurantDetail = () => {
     const { id } = useParams(); // Récupère l'id dans l'URL
     const [restaurant, setRestaurant] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
+    const [refresh, setRefresh] = useState(false);
     const [error, setError] = useState(null);
 
     const handleDelete = async () => {
@@ -58,8 +60,10 @@ const RestaurantDetail = () => {
                 Site Web
             </a>
 
-            <DishesList restaurantId={restaurant.id} />
-            
+            <AddDishForm restaurantId={restaurant.id} onDishAdded={() => setRefresh(!refresh)} />
+
+            <DishesList restaurantId={restaurant.id} key={refresh} />
+
             <div className='flex justify-between mt-4'>
                 <button 
                     onClick={() => navigate(`/edit/${restaurant.id}`)}
