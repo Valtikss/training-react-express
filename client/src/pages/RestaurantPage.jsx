@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import { getRestaurantById, deleteRestaurant } from '../services/restaurantsService';
 import { getPlats } from '../services/platsService';
 
 import { FaHeart, FaEllipsisH, FaStar, FaEdit, FaTrash } from 'react-icons/fa';
+import { Plus } from 'lucide-react';
 
 function RestaurantPage() {
     const { id } = useParams();
@@ -157,6 +158,13 @@ function RestaurantPage() {
                                 <p className="text-gray-800 font-semibold mt-2">{plat.price} €</p>
                             </div>
                         ))}
+                        <Link to={`/plats/${restaurant.id}/create`} className="hover:text-gray-400">
+                            <div className="flex items-center justify-center w-full h-full border-2 border-dashed border-gray-300 rounded-lg p-4">
+                                <span className="text-gray-500">
+                                    <Plus color="green" size={20}/>
+                                </span>
+                            </div>                    
+                        </Link>
                     </div>
                 )}
             </div>

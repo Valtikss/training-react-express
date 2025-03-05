@@ -27,3 +27,15 @@ exports.getPlatById = (req, res) => {
     }
     res.send(plat);
 };
+
+exports.createPlat = (req, res) => {
+  const plats = loadPlats();
+  const newPlat = req.body;
+
+  newPlat.id = plats.length ? plats[plats.length - 1].id + 1 : 1;
+  plats.push(newPlat);
+
+  fs.writeFileSync(dataPath, JSON.stringify(plats, null, 2), 'utf8');
+
+  res.status(201).send(newPlat);
+};

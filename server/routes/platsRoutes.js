@@ -4,5 +4,6 @@ const router = express.Router();
 
 router.get('/', platsController.getPlats);
 router.get('/:id', platsController.getPlatById);
+router.post('/', platsController.createPlat);
 
 module.exports = router;
