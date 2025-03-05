@@ -27,3 +27,12 @@ export async function getPlatById(id) {
         throw e;
     }
 };
+
+export async function createPlat(plat) {
+    try {
+        const response = await plats.createPlat(plat);
+        return response;
+    } catch(e) {
+        throw e;
+    }
+}

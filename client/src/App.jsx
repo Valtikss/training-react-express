@@ -6,6 +6,7 @@ import AboutPage from './pages/AboutPage';
 import RestaurantPage from './pages/RestaurantPage';
 import CreateRestaurant from './pages/CreateRestaurant';
 import EditRestaurant from './pages/EditRestaurant';
+import CreatePlat from './pages/CreatePlat';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/restaurants/:id" element={<RestaurantPage />} />
         <Route path="/create" element={<CreateRestaurant />} />
         <Route path="/restaurants/:id/edit" element={<EditRestaurant />} />
+        <Route path="/plats/:restaurantId/create" element={<CreatePlat />} />
       </Routes>
       <Footer />
     </Router>
