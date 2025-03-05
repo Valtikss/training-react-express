@@ -19,10 +19,14 @@ const apiError = (error) => {
     if (error.response) {
         console.error('Status:', error.response.status);
         console.error('Data:', error.response.data);
+        console.error('Headers:', error.response.headers);
+        console.error('Config:', error.config);
+    } else if (error.request) {
+        console.error('Request was made but no response received:', error.request);
     } else {
-        console.error('Message:', error.message);
-        alert('Something went wrong! Try again.');
+        console.error('Error setting up request:', error.message);
     }
+    console.error('Full error:', error);
 };
 
 export default apiClient;

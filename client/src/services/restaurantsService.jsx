@@ -47,3 +47,13 @@ export async function updateRestaurant(id, restaurant) {
         throw new Error('Failed to update restaurant');
     }
 };
+
+export async function deleteRestaurant(id) {
+    try {
+        const response = await restaurants.deleteRestaurant(id);
+        return response;
+    } catch(error) {
+        console.error('Failed to delete restaurant', error);
+        throw new Error('Failed to delete restaurant');
+    }
+};

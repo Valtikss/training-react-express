@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { getRestaurantById } from '../services/restaurantsService';
+import { getRestaurantById, deleteRestaurant } from '../services/restaurantsService';
 
-import { FaHeart, FaEllipsisH, FaStar, FaEdit } from 'react-icons/fa';
+import { FaHeart, FaEllipsisH, FaStar, FaEdit, FaTrash } from 'react-icons/fa';
 
 function RestaurantPage() {
     const { id } = useParams();
@@ -27,6 +27,18 @@ function RestaurantPage() {
 
         fetchRestaurant();
     }, [id]);
+
+    const handleDelete = async () => {
+        if (window.confirm('Êtes-vous sûr de vouloir supprimer ce restaurant?')) {
+            try {
+                await deleteRestaurant(id);
+                navigate('/home');
+            } catch (error) {
+                console.error('Error deleting restaurant:', error);
+                setError('Failed to delete restaurant');
+            }
+        }
+    };
 
     if (loading) {
         return (
@@ -77,6 +89,13 @@ function RestaurantPage() {
                         title="Modifier le restaurant"
                     >
                         <FaEdit className="text-gray-700 text-xl" />
+                    </button>
+                    <button 
+                        onClick={handleDelete}
+                        className="bg-white rounded-full p-2 shadow-md hover:bg-red-500 hover:text-white transition-colors"
+                        title="Supprimer le restaurant"
+                    >
+                        <FaTrash className="text-xl" />
                     </button>
                     <button className="bg-white rounded-full p-2 shadow-md">
                         <FaHeart className="text-gray-700 text-xl" />
