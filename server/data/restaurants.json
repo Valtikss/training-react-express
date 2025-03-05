@@ -97,14 +97,5 @@
     "phone": "+30 21 9876 5432",
     "website": "https://horizonmediterranean.gr",
     "image": "https://images.pexels.com/photos/3649208/pexels-photo-3649208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-  },
-  {
-    "name": "Les Fouquet's",
-    "address": "99 Avenue des Champs Elysées, 75008 Paris",
-    "cuisine": "Française",
-    "phone": "01 40 69 60 50",
-    "website": "https://www.hotelsbarriere.com/collection-fouquet-s/paris/restaurants-et-bars/brasserie-fouquet-s-paris",
-    "image": "https://www.carnetsduluxe.com/wp-content/uploads/2019/01/Fouquets-min.jpg",
-    "id": 11
   }
 ]
