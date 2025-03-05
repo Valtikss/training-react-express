@@ -1,9 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { Trash2, Plus, Minus, X } from 'lucide-react';
 
 const Cart = ({ isOpen, onClose }) => {
     const { cartItems, removeFromCart, updateQuantity, getTotalPrice, isLoading } = useCart();
+    const navigate = useNavigate();
+
+    const handleCommander = () => {
+        onClose();
+        navigate('/commande');
+    };
 
     return (
         <>
@@ -75,7 +82,10 @@ const Cart = ({ isOpen, onClose }) => {
                                 <span className="font-medium">Total</span>
                                 <span className="font-bold">{getTotalPrice().toFixed(2)}€</span>
                             </div>
-                            <button className="w-full bg-black text-white py-3 rounded-full hover:bg-gray-800 transition-colors">
+                            <button 
+                                onClick={handleCommander}
+                                className="w-full bg-black text-white py-3 rounded-full hover:bg-gray-800 transition-colors"
+                            >
                                 Commander
                             </button>
                         </div>
