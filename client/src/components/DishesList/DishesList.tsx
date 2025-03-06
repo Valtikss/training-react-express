@@ -1,11 +1,11 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
+import { useCartStore, useToastStore } from "@/store";
+import { useEffect, useState } from "react";
 
 import CreateDishAccordion from "./CreateDishAccoridion";
 import DisplayDishAccordion from "./DisplayDishAccordion";
 import { dishApi } from "@/services/api";
 import useDishes from "@/hooks/useDishes";
-import { useState } from "react";
-import { useToastStore } from "@/store";
 
 interface DishesListProps {
   restaurantId: number;
@@ -27,6 +27,8 @@ const DishesList: React.FC<DishesListProps> = ({
   };
 
   const setToast = useToastStore((state) => state.setToast);
+  const { addToCart, increaseQuantity, decreaseQuantity, getQuantity } =
+    useCartStore((state) => state);
   const handleCreateDish = (toCreate: CreateDishDTO) => {
     dishApi.create(restaurantId, toCreate).then(
       () => {
@@ -69,6 +71,26 @@ const DishesList: React.FC<DishesListProps> = ({
         }
       );
   };
+  const handleAddToCart = (dish: DishDTO) => () => {
+    addToCart({
+      restaurantId: restaurantId,
+      dishId: dish.id,
+      name: dish.name,
+      price: dish.price,
+      quantity: 1,
+    });
+    setToast({
+      message: "Plat ajouté au panier",
+      type: "success",
+      isOpen: true,
+    });
+  };
+  const handleIncreaseQuantity = (dishId: number) => () => {
+    increaseQuantity(restaurantId, dishId);
+  };
+  const handleDecreaseQuantity = (dishId: number) => () => {
+    decreaseQuantity(restaurantId, dishId);
+  };
 
   if (loading) return <Box>Chargement des plats...</Box>;
   if (error) return <Box>{error}</Box>;
@@ -83,8 +105,13 @@ const DishesList: React.FC<DishesListProps> = ({
           <DisplayDishAccordion
             key={dish.id}
             dish={dish}
+            nbInCart={getQuantity(restaurantId, dish.id)}
             isEditMode={isEditMode}
-            handleDelete={handleDeleteDish(dish.id)}
+            handleClickAction={
+              isEditMode ? handleDeleteDish(dish.id) : handleAddToCart(dish)
+            }
+            handleIncreaseQuantity={handleIncreaseQuantity(dish.id)}
+            handleDecreaseQuantity={handleDecreaseQuantity(dish.id)}
           />
         ))}
         {isEditMode && creating && (

@@ -1,3 +1,4 @@
+import useCartStore from "./useCartStore";
 import useToastStore from "./useToastStore";
 
-export { useToastStore };
+export { useCartStore, useToastStore };
