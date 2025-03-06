@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -11,26 +11,25 @@ import Cart from './components/Cart';
 import OrderPage from './pages/OrderPage';
 
 function App() {
+
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/restaurants/:id" element={<RestaurantDetail />} />
-        <Route path="/add" element={<AddRestaurant />} />
-        <Route path="/edit/:id" element={<EditRestaurant />} />
-        <Route path="/about" element={<AboutPage />} />
-      </Routes>
-      <div className="container mx-auto p-5">
-        <Cart />
-      </div>
-      <div className="container mx-auto p-5">
+    <StrictMode>
+      <Router>
+        <Header />
         <Routes>
-          <Route path="/commande" element={<OrderPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/restaurants/:id" element={<RestaurantDetail />} />
+          <Route path="/add" element={<AddRestaurant />} />
+          <Route path="/edit/:id" element={<EditRestaurant />} />
+          <Route path="/orders" element={<OrderPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
-      </div>
-      <Footer />
-    </Router>
+        <div className="container mx-auto p-5">
+          <Cart />
+        </div>
+        <Footer />
+      </Router>
+    </StrictMode>
   );
 }
 

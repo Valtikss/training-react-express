@@ -1,8 +1,15 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Cart = () => {
     const { cart, removeFromCart } = useContext(CartContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    if (location.pathname === "/orders") {
+        return null;
+    }
 
     return (
         <div className="p-5 border rounded shadow-lg">
@@ -26,6 +33,15 @@ const Cart = () => {
                         </li>
                     ))}
                 </ul>
+            )}
+
+            {cart.length > 0 && (
+                <button
+                    onClick={() => navigate("/orders")}
+                    className="mt-4 bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
+                >
+                    Passer la commande
+                </button>
             )}
         </div>
     );
