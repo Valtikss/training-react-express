@@ -8,16 +8,24 @@ import {
   Stack,
 } from "@mui/material";
 
+import DisplayDishAccordionActions from "./DisplayDishAccordionActions";
+
 interface DishAccordionProps {
   dish: DishDTO;
   isEditMode: boolean;
-  handleDelete?: () => void;
+  handleClickAction: () => void;
+  handleIncreaseQuantity?: () => void;
+  handleDecreaseQuantity?: () => void;
+  nbInCart: number;
 }
 
 const DisplayDishAccordion: React.FC<DishAccordionProps> = ({
   dish,
   isEditMode,
-  handleDelete,
+  handleClickAction,
+  handleIncreaseQuantity,
+  handleDecreaseQuantity,
+  nbInCart,
 }) => {
   return (
     <Accordion slotProps={{ transition: { unmountOnExit: true } }}>
@@ -35,20 +43,13 @@ const DisplayDishAccordion: React.FC<DishAccordionProps> = ({
         <div>{dish.description}</div>
         <div>{dish.price} €</div>
       </AccordionDetails>
-      {isEditMode && (
-        <AccordionActions>
-          <Stack direction={"row"} spacing={1} justifyContent={"end"}>
-            <Button
-              variant="contained"
-              color="error"
-              size="small"
-              onClick={handleDelete}
-            >
-              Supprimer
-            </Button>
-          </Stack>
-        </AccordionActions>
-      )}
+      <DisplayDishAccordionActions
+        isEditMode={isEditMode}
+        handleClickAction={handleClickAction}
+        handleIncreaseQuantity={handleIncreaseQuantity}
+        handleDecreaseQuantity={handleDecreaseQuantity}
+        nbInCart={nbInCart}
+      />
     </Accordion>
   );
 };

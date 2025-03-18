@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import About from "@/pages/About";
+import Cart from "@/pages/Cart";
 import CreateRestaurant from "@/pages/CreateRestaurant";
 import EditRestaurant from "@/pages/EditRestaurant";
 import Footer from "@components/Footer";
@@ -70,6 +71,16 @@ const AppRouter = () => {
             <>
               <Header />
               <EditRestaurant />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <>
+              <Header />
+              <Cart />
               <Footer />
             </>
           }

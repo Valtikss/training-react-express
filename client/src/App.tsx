@@ -1,7 +1,13 @@
 import Router from "@components/Router";
+import Toast from "@components/Toast";
 
 function App() {
-  return <Router />;
+  return (
+    <>
+      <Toast />
+      <Router />
+    </>
+  );
 }
 
 export default App;
